@@ -48,8 +48,9 @@ public class Agenda {
 	
 	//OUTROS METODOS
 	
-	public void addToAgenda(Reserva reserva) {
+	public Reserva addToAgenda(Reserva reserva) {
 		this.reservas.add(reserva);
+		return reserva;
 	}
 	
 }

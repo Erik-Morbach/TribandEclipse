@@ -56,23 +56,34 @@ public class Estudio extends Usuario {
 	
 	//OUTROS METODOS
 	
-	public void setServico(String descricao) {
-		Servico servico = new Servico(descricao,this);
-		this.servicos.add(servico);
+	public Servico addServico(Servico novo) {
+		this.servicos.add(novo);
+		return novo;
+	}
+	public void removeServico(int indice){
+		this.servicos.remove(indice);
 	}
 	
+	public Servico editServico(int indice, Servico novo){
+		this.servicos.remove(indice);
+		this.servicos.add(indice,novo);
+		return novo;
+	}
 	
-	public void Avaliar(int compH,int cuidEquip, Date data,Banda banda){
+	public AvaliacaoBanda Avaliar(int compH,int cuidEquip, Date data,Banda banda){
 		AvaliacaoBanda avb = new AvaliacaoBanda(compH,cuidEquip,data,banda,this);
-		banda.setAvaliacao(avb);
+		banda.addAvaliacao(avb);
+		return avb;
 	}
 	
-	public void setAvaliacao(AvaliacaoEstudio ave){
+	public AvaliacaoEstudio addAvaliacao(AvaliacaoEstudio ave){
 		this.avaliacoes.add(ave);
-		}
+		return ave;
+	}
 	
-	public void addReserva(Reserva reserva) {
+	public Reserva addReserva(Reserva reserva) {
 		this.agenda.addToAgenda(reserva);
+		return reserva;
 	}
 	
 }

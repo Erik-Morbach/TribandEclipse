@@ -5,11 +5,11 @@ import java.util.ArrayList;
 public class Chat {
 
 	private long idChat;
-	private ArrayList<String> mensagens;
+	private ArrayList<Mensagem> mensagens;
 	private Usuario usuario1;
 	private Usuario usuario2;
 	
-	public Chat(ArrayList<String> mensagens, Usuario usuario1, Usuario usuario2) {
+	public Chat(ArrayList<Mensagem> mensagens, Usuario usuario1, Usuario usuario2) {
 		super();
 		this.mensagens = mensagens;
 		this.usuario1 = usuario1;
@@ -20,11 +20,11 @@ public class Chat {
 		super();
 	}
 
-	public ArrayList<String> getMensagens() {
+	public ArrayList<Mensagem> getMensagens() {
 		return mensagens;
 	}
 
-	public void setMensagens(ArrayList<String> mensagens) {
+	public void setMensagens(ArrayList<Mensagem> mensagens) {
 		this.mensagens = mensagens;
 	}
 
@@ -44,7 +44,7 @@ public class Chat {
 		this.usuario2 = usuario2;
 	}
 
-	public void addMensagem(String mensagem) {
+	public void addMensagem(Mensagem mensagem) {
 		this.mensagens.add(mensagem);
 	}
 	

@@ -37,24 +37,34 @@ public class Banda extends Usuario{
 	public void setFotos(ArrayList<String> fotos) {
 		this.fotos = fotos;
 	}
+	
 
+	public ArrayList<AvaliacaoBanda> getAvaliacoes() {
+		return avaliacoes;
+	}
+
+	public void setAvaliacoes(ArrayList<AvaliacaoBanda> avaliacoes) {
+		this.avaliacoes = avaliacoes;
+	}
+	
 	//OUTROS METODOS
 	
-	public void setAvaliacao(AvaliacaoBanda av){
+
+	public AvaliacaoBanda addAvaliacao(AvaliacaoBanda av){
 		this.avaliacoes.add(av);
+		return av;
 	}
 	
-	public ArrayList<AvaliacaoBanda> verAvaliacao() {
-		return this.avaliacoes;
-	}
 	
-	public void Avaliar(int limpeza,int qualiEquip,int compComHorario,int atendimento, Date data,Estudio estudio){
+	public AvaliacaoEstudio Avaliar(int limpeza,int qualiEquip,int compComHorario,int atendimento, Date data,Estudio estudio){
 		AvaliacaoEstudio ave = new AvaliacaoEstudio(limpeza,qualiEquip,compComHorario,atendimento,data,this,estudio);
-		estudio.setAvaliacao(ave);
+		estudio.addAvaliacao(ave);
+		return ave;
 	}
 	
-	public void addReserva(Reserva reserva) {
+	public Reserva addReserva(Reserva reserva) {
 		this.agenda.addToAgenda(reserva);
+		return reserva;
 	}
 	
 }

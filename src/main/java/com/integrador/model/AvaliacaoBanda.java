@@ -2,7 +2,7 @@ package com.integrador.model;
 
 import java.sql.Date;
 
-public abstract class AvaliacaoBanda {
+public class AvaliacaoBanda {
 
 	private long idAvBanda;
 	private int compComHorario;

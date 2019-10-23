@@ -2,7 +2,7 @@ package com.integrador.model;
 
 import java.sql.Date;
 
-public abstract class AvaliacaoEstudio {
+public class AvaliacaoEstudio {
 
 	private long idAvEstudio;
 	private int limpeza;

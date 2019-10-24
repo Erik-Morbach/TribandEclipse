@@ -6,36 +6,33 @@ public class Mensagem implements EntidadeBase{
 //para atualizaçções futuras o sistema de mensagens sera melhorado
 	
 	
-	private long idMensagem;
+	private Long idMensagem;
 	private String mensagem;
 	private Time horario;
-	private Usuario remetente;
-	private Usuario destinatario;
-	private boolean recebeu;
-	private boolean visualizou;
 	private Chat chat;
+	private String nomeTabela = "mensagem";
 	
 	public Mensagem(){ super(); }
-	public Mensagem(Long idMensagem, String mensagem, Time horario, Usuario remetente, Usuario destinatario,
-			boolean recebeu, boolean visualizou, Chat chat) {
+	public Mensagem(Long idMensagem, String mensagem, Time horario, Chat chat) {
 		super();
 		this.idMensagem = idMensagem;
 		this.mensagem = mensagem;
 		this.horario = horario;
-		this.remetente = remetente;
-		this.destinatario = destinatario;
-		this.recebeu = recebeu;
-		this.visualizou = visualizou;
 		this.chat = chat;
 	}
 
 
+
+
 	@Override
-	public long getId() {
-		return idMensagem;
+	public Long getId() {
+		// TODO Auto-generated method stub
+		return this.idMensagem;
 	}
-	public void setIdMensagem(Long idMensagem) {
-		this.idMensagem = idMensagem;
+	@Override
+	public void setId(Long id) {
+		// TODO Auto-generated method stub
+		this.idMensagem = id;
 	}
 	public String getMensagem() {
 		return mensagem;
@@ -49,39 +46,17 @@ public class Mensagem implements EntidadeBase{
 	public void setHorario(Time horario) {
 		this.horario = horario;
 	}
-	public boolean isRecebeu() {
-		return recebeu;
-	}
-	public void setRecebeu(boolean recebeu) {
-		this.recebeu = recebeu;
-	}
-	public boolean isVisualizou() {
-		return visualizou;
-	}
-	public void setVisualizou(boolean visualizou) {
-		this.visualizou = visualizou;
-	}
-	public Usuario getRemetente() {
-		return remetente;
-	}
-	public void setRemetente(Usuario remetente) {
-		this.remetente = remetente;
-	}
-	public Usuario getDestinatario() {
-		return destinatario;
-	}
-	public void setDestinatario(Usuario destinatario) {
-		this.destinatario = destinatario;
-	}
 	public Chat getChat() {
 		return chat;
 	}
 	public void setChat(Chat chat) {
 		this.chat = chat;
 	}
-	
-	
-	
-	
-	
+	public String getNomeTabela() {
+		return nomeTabela;
+	}
+	public void setNomeTabela(String nomeTabela) {
+		this.nomeTabela = nomeTabela;
+	}
+
 }

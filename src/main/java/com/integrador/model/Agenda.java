@@ -4,37 +4,51 @@ import java.util.ArrayList;
 
 public class Agenda implements EntidadeBase{
 
-	private long idAgenda;
-	private Usuario usuario;
+	private Long idAgenda;
+	private Estudio estudio;
+	private Banda banda;
 	private ArrayList<Reserva> reservas;
+	private String nomeTabela = "agenda";
+
 	
-	public Agenda(Usuario usuario, ArrayList<Reserva> reservas) {
+
+	public Agenda(Long idAgenda, Estudio estudio, Banda banda, ArrayList<Reserva> reservas) {
 		super();
-		this.usuario = usuario;
+		this.idAgenda = idAgenda;
+		this.estudio = estudio;
+		this.banda = banda;
 		this.reservas = reservas;
 	}
-	
+
 	public Agenda() {
 		super();
 	}
 
 	//GETS E SETS
 	
-	@Override
-	public long getId() {
+	
+	public Long getId() {
 		return idAgenda;
 	}
 
-	public void setIdAgenda(long idAgenda) {
+	public void setId(Long idAgenda) {
 		this.idAgenda = idAgenda;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Estudio getEstudio() {
+		return estudio;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setEstudio(Estudio estudio) {
+		this.estudio = estudio;
+	}
+
+	public Banda getBanda() {
+		return banda;
+	}
+
+	public void setBanda(Banda banda) {
+		this.banda = banda;
 	}
 
 	public ArrayList<Reserva> getReservas() {
@@ -45,9 +59,19 @@ public class Agenda implements EntidadeBase{
 		this.reservas = reservas;
 	}
 	
+
 	
 	//OUTROS METODOS
 	
+
+	public String getNomeTabela() {
+		return nomeTabela;
+	}
+
+	public void setNomeTabela(String nomeTabela) {
+		this.nomeTabela = nomeTabela;
+	}
+
 	public Reserva addToAgenda(Reserva reserva) {
 		this.reservas.add(reserva);
 		return reserva;

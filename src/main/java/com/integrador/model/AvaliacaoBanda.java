@@ -4,21 +4,22 @@ import java.sql.Date;
 
 public class AvaliacaoBanda implements EntidadeBase{
 
-	private long idAvBanda;
-	private int compComHorario;
-	private int cuidadoComEquipamento;
+	private Long idAvBanda;
+	private Integer compComHorario;
+	private Integer cuidadoComEquipamento;
 	private Date dataAvBanda;
 	private Banda banda;
-	private Estudio estudio;
+	private String nomeTabela = "avaliacao_banda";
 	
-	public AvaliacaoBanda(int compComHorario, int cuidadoComEquipamento, Date dataAvBanda, Banda banda,
-			Estudio estudio) {
+
+	public AvaliacaoBanda(Long idAvBanda, Integer compComHorario, Integer cuidadoComEquipamento, Date dataAvBanda,
+			Banda banda) {
 		super();
+		this.idAvBanda = idAvBanda;
 		this.compComHorario = compComHorario;
 		this.cuidadoComEquipamento = cuidadoComEquipamento;
 		this.dataAvBanda = dataAvBanda;
 		this.banda = banda;
-		this.estudio = estudio;
 	}
 
 	public AvaliacaoBanda() {
@@ -28,27 +29,27 @@ public class AvaliacaoBanda implements EntidadeBase{
 	//GETS E SETS;
 	
 	@Override
-	public long getId() {
+	public Long getId() {
 		return idAvBanda;
 	}
 
-	public void setIdAvBanda(int idAvBanda) {
+	public void setId(Long idAvBanda) {
 		this.idAvBanda = idAvBanda;
 	}
 
-	public int getCompComHorario() {
+	public Integer getCompComHorario() {
 		return compComHorario;
 	}
 
-	public void setCompComHorario(int compComHorario) {
+	public void setCompComHorario(Integer compComHorario) {
 		this.compComHorario = compComHorario;
 	}
 
-	public int getCuidadoComEquipamento() {
+	public Integer getCuidadoComEquipamento() {
 		return cuidadoComEquipamento;
 	}
 
-	public void setCuidadoComEquipamento(int cuidadoComEquipamento) {
+	public void setCuidadoComEquipamento(Integer cuidadoComEquipamento) {
 		this.cuidadoComEquipamento = cuidadoComEquipamento;
 	}
 
@@ -68,11 +69,12 @@ public class AvaliacaoBanda implements EntidadeBase{
 		this.banda = banda;
 	}
 
-	public Estudio getEstudio() {
-		return estudio;
+	public String getNomeTabela() {
+		return nomeTabela;
 	}
 
-	public void setEstudio(Estudio estudio) {
-		this.estudio = estudio;
+	public void setNomeTabela(String nomeTabela) {
+		this.nomeTabela = nomeTabela;
 	}
+
 }

@@ -4,25 +4,31 @@ import java.util.ArrayList;
 
 public class Chat implements EntidadeBase{
 
-	private long idChat;
+	private Long idChat;
+	private Banda banda;
+	private Estudio estudio;
 	private ArrayList<Mensagem> mensagens;
-	private Usuario usuario1;
-	private Usuario usuario2;
+	private String nomeTabela = "chat";
 	
-	public Chat(ArrayList<Mensagem> mensagens, Usuario usuario1, Usuario usuario2) {
+
+	public Chat(Long idChat, Banda banda, Estudio estudio, ArrayList<Mensagem> mensagens) {
 		super();
+		this.idChat = idChat;
+		this.banda = banda;
+		this.estudio = estudio;
 		this.mensagens = mensagens;
-		this.usuario1 = usuario1;
-		this.usuario2 = usuario2;
 	}
-	
+
 	public Chat() {
 		super();
 	}
 
 	@Override
-	public long getId(){
+	public Long getId(){
 		return this.idChat;
+	}
+	public void setId(Long id) {
+		this.idChat = id;
 	}
 	
 	public ArrayList<Mensagem> getMensagens() {
@@ -33,20 +39,28 @@ public class Chat implements EntidadeBase{
 		this.mensagens = mensagens;
 	}
 
-	public Usuario getUsuario1() {
-		return usuario1;
+	public Banda getBanda() {
+		return banda;
 	}
 
-	public void setUsuario1(Usuario usuario1) {
-		this.usuario1 = usuario1;
+	public void setBanda(Banda banda) {
+		this.banda = banda;
 	}
 
-	public Usuario getUsuario2() {
-		return usuario2;
+	public Estudio getEstudio() {
+		return estudio;
 	}
 
-	public void setUsuario2(Usuario usuario2) {
-		this.usuario2 = usuario2;
+	public void setEstudio(Estudio estudio) {
+		this.estudio = estudio;
+	}
+
+	public String getNomeTabela() {
+		return nomeTabela;
+	}
+
+	public void setNomeTabela(String nomeTabela) {
+		this.nomeTabela = nomeTabela;
 	}
 
 	public void addMensagem(Mensagem mensagem) {

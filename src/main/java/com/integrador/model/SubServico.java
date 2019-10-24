@@ -5,7 +5,7 @@ public class SubServico implements EntidadeBase {
 	private Long idSubServico;
 	private String descricao;
 	private Servico servico;
-	
+	private String nomeTabela = "subservico";
 	
 	public SubServico(){ super(); }
 	public SubServico(Long idSubServico, String descricao, Servico servico) {
@@ -16,8 +16,11 @@ public class SubServico implements EntidadeBase {
 	}
 	
 	@Override
-	public long getId() {
+	public Long getId() {
 		return idSubServico;
+	}
+	public void setId(Long id) {
+		this.idSubServico = id;
 	}
 	public void setIdSubServico(Long idSubServico) {
 		this.idSubServico = idSubServico;
@@ -33,6 +36,12 @@ public class SubServico implements EntidadeBase {
 	}
 	public void setServico(Servico servico) {
 		this.servico = servico;
+	}
+	public String getNomeTabela() {
+		return nomeTabela;
+	}
+	public void setNomeTabela(String nomeTabela) {
+		this.nomeTabela = nomeTabela;
 	}
 	
 

@@ -4,67 +4,71 @@ import java.sql.Date;
 
 public class AvaliacaoEstudio implements EntidadeBase{
 
-	private long idAvEstudio;
-	private int limpeza;
-	private int qualidadeEquip;
-	private int compComHorario;
-	private int atendimento;
+	private Long idAvEstudio;
+	private Integer limpeza;
+	private Integer qualidadeEquip;
+	private Integer compComHorario;
+	private Integer atendimento;
 	private Date data;
-	private Banda banda;
 	private Estudio estudio;
+	private String nomeTabela = "avaliacao_estudio";
 	
-	public AvaliacaoEstudio(int limpeza, int qualidadeEquip, int compComHorario, int atendimento,
-			Date data, Banda banda, Estudio estudio) {
+	public AvaliacaoEstudio() { super(); } 
+	
+
+	public AvaliacaoEstudio(Long idAvEstudio, Integer limpeza, Integer qualidadeEquip, Integer compComHorario,
+			Integer atendimento, Date data, Estudio estudio) {
 		super();
+		this.idAvEstudio = idAvEstudio;
 		this.limpeza = limpeza;
 		this.qualidadeEquip = qualidadeEquip;
 		this.compComHorario = compComHorario;
 		this.atendimento = atendimento;
 		this.data = data;
-		this.banda = banda;
 		this.estudio = estudio;
 	}
+
 
 	//GETS E SETS
 	
 	@Override
-	public long getId() {
+	public Long getId() {
 		return idAvEstudio;
 	}
 
-	public void setIdAvEstudio(int idAvEstudio) {
+	public void setId(Long idAvEstudio) {
 		this.idAvEstudio = idAvEstudio;
 	}
 
-	public int getLimpeza() {
+	public Integer getLimpeza() {
 		return limpeza;
 	}
 
-	public void setLimpeza(int limpeza) {
+	public void setLimpeza(Integer limpeza) {
 		this.limpeza = limpeza;
 	}
 
-	public int getQualidadeEquip() {
+	public Integer getQualidadeEquip() {
 		return qualidadeEquip;
 	}
 
-	public void setQualidadeEquip(int qualidadeEquip) {
+	public void setQualidadeEquip(Integer qualidadeEquip) {
 		this.qualidadeEquip = qualidadeEquip;
 	}
 
-	public int getCompComHorario() {
+	public Integer getCompComHorario() {
 		return compComHorario;
 	}
 
-	public void setCompComHorario(int compComHorario) {
+	public void setCompComHorario(Integer compComHorario) {
 		this.compComHorario = compComHorario;
 	}
 
-	public int getAtendimento() {
+	public Integer getAtendimento() {
 		return atendimento;
 	}
 
-	public void setAtendimento(int atendimento) {
+	public void setAtendimento(Integer atendimento) {
 		this.atendimento = atendimento;
 	}
 
@@ -76,20 +80,22 @@ public class AvaliacaoEstudio implements EntidadeBase{
 		this.data = data;
 	}
 
-	public Banda getBanda() {
-		return banda;
-	}
-
-	public void setBanda(Banda banda) {
-		this.banda = banda;
-	}
-
 	public Estudio getEstudio() {
 		return estudio;
 	}
 
 	public void setEstudio(Estudio estudio) {
 		this.estudio = estudio;
+	}
+
+
+	public String getNomeTabela() {
+		return nomeTabela;
+	}
+
+
+	public void setNomeTabela(String nomeTabela) {
+		this.nomeTabela = nomeTabela;
 	}
 	
 	//OUTROS METODOS

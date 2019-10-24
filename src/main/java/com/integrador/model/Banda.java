@@ -2,68 +2,115 @@ package com.integrador.model;
 import java.sql.Date;
 import java.util.ArrayList;
 
-public class Banda extends Usuario implements EntidadeBase{
+public class Banda  implements Usuario, EntidadeBase{
 
-	private long idBanda;
-	private int integrantes;
-	private ArrayList<String> fotos;
-	private ArrayList<AvaliacaoBanda> avaliacoes;
+	private Long idBanda;
+	private String nome;
+	private String email;
+	private String senha;
+	private Integer integrantes;
+	private Foto fotoPerfil;
 	private Agenda agenda;
+	private ArrayList<Foto> fotos;
+	private ArrayList<AvaliacaoBanda> avaliacoes;
+	private String nomeTabela = "banda";
 	
-	public Banda(String nome, String email, String senha, int integrantes, ArrayList<String> fotos) {
-		super(nome, email, senha);
+
+	
+	public Banda(Long idBanda, String nome, String email, String senha, Integer integrantes, Foto fotoPerfil,
+			ArrayList<Foto> fotos, ArrayList<AvaliacaoBanda> avaliacoes, Agenda agenda) {
+		super();
+		this.idBanda = idBanda;
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
 		this.integrantes = integrantes;
+		this.fotoPerfil = fotoPerfil;
 		this.fotos = fotos;
+		this.avaliacoes = avaliacoes;
+		this.agenda = agenda;
 	}
-	
 	public Banda(){
 		super();
 	}
 
 	//GET E SETS
 	
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 	@Override
-	public long getId() {
+	public Long getId() {
 		// TODO Auto-generated method stub
 		return this.idBanda;
 	}
- 
-	public int getIntegrantes() {
+	public void setId(Long id) {
+		this.idBanda = id;
+	}
+ 	public Integer getIntegrantes() {
 		return integrantes;
 	}
-
-	public void setIntegrantes(int integrantes) {
+	public void setIntegrantes(Integer integrantes) {
 		this.integrantes = integrantes;
 	}
-
-	public ArrayList<String> getFotos() {
+	public Foto getFotoPerfil() {
+		return fotoPerfil;
+	}
+	public void setFotoPerfil(Foto fotoPerfil) {
+		this.fotoPerfil = fotoPerfil;
+	}
+	public ArrayList<Foto> getFotos() {
 		return fotos;
 	}
-
-	public void setFotos(ArrayList<String> fotos) {
+	public void setFotos(ArrayList<Foto> fotos) {
 		this.fotos = fotos;
 	}
-	
-
 	public ArrayList<AvaliacaoBanda> getAvaliacoes() {
 		return avaliacoes;
 	}
-
 	public void setAvaliacoes(ArrayList<AvaliacaoBanda> avaliacoes) {
 		this.avaliacoes = avaliacoes;
+	}
+	public Agenda getAgenda() {
+		return agenda;
+	}
+	public void setAgenda(Agenda agenda) {
+		this.agenda = agenda;
 	}
 	
 	//OUTROS METODOS
 	
 
+
+	public String getNomeTabela() {
+		return nomeTabela;
+	}
+	public void setNomeTabela(String nomeTabela) {
+		this.nomeTabela = nomeTabela;
+	}
 	public AvaliacaoBanda addAvaliacao(AvaliacaoBanda av){
 		this.avaliacoes.add(av);
 		return av;
 	}
 	
 	
-	public AvaliacaoEstudio Avaliar(int limpeza,int qualiEquip,int compComHorario,int atendimento, Date data,Estudio estudio){
-		AvaliacaoEstudio ave = new AvaliacaoEstudio(limpeza,qualiEquip,compComHorario,atendimento,data,this,estudio);
+	public AvaliacaoEstudio Avaliar(Integer limpeza,Integer qualiEquip,Integer compComHorario,Integer atendimento, Date data,Estudio estudio){
+		AvaliacaoEstudio ave = new AvaliacaoEstudio(new Long(0),limpeza,qualiEquip,compComHorario,atendimento,data,estudio);
 		estudio.addAvaliacao(ave);
 		return ave;
 	}
@@ -73,6 +120,7 @@ public class Banda extends Usuario implements EntidadeBase{
 		return reserva;
 	}
 
+	
 	
 
 	

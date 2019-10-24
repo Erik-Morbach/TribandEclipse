@@ -2,18 +2,19 @@ package com.integrador.model;
 
 public class Localizacao implements EntidadeBase {
 
-	private long idLocalizacao;
-	private long cep;
+	private Long idLocalizacao;
+	private Long cep;
 	private String estado;
 	private String cidade;
 	private String bairro;
 	private String rua;
-	private int numero;
-	private Double lagitude;
+	private Integer numero;
+	private Double latitude;
 	private Double longitude;
+	private String nomeTabela = "localizacao";
 	
-	public Localizacao(long idLocalizacao, long cep, String estado, String cidade, String bairro, String rua,
-			int numero, Double lagitude, Double longitude) {
+	public Localizacao(Long idLocalizacao, Long cep, String estado, String cidade, String bairro, String rua,
+			Integer numero, Double latitude, Double longitude) {
 		super();
 		this.idLocalizacao = idLocalizacao;
 		this.cep = cep;
@@ -22,28 +23,27 @@ public class Localizacao implements EntidadeBase {
 		this.bairro = bairro;
 		this.rua = rua;
 		this.numero = numero;
-		this.lagitude = lagitude;
+		this.latitude = latitude;
 		this.longitude = longitude;
 	}
-	
+
 	public Localizacao(){
-		
+		super();
 	}
 	
 	@Override
-	public long getId() {
+	public Long getId() {
 		return idLocalizacao;
 	}
-
-	public void setIdLocalizacao(long idLocalizacao) {
-		this.idLocalizacao = idLocalizacao;
+	public void setId(Long id) {
+		this.idLocalizacao = id;
 	}
 
-	public long getCep() {
+	public Long getCep() {
 		return cep;
 	}
 
-	public void setCep(long cep) {
+	public void setCep(Long cep) {
 		this.cep = cep;
 	}
 
@@ -79,20 +79,20 @@ public class Localizacao implements EntidadeBase {
 		this.rua = rua;
 	}
 
-	public int getNumero() {
+	public Integer getNumero() {
 		return numero;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
 
-	public Double getLagitude() {
-		return lagitude;
+	public Double getLatitude() {
+		return latitude;
 	}
 
-	public void setLagitude(Double lagitude) {
-		this.lagitude = lagitude;
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
 	}
 
 	public Double getLongitude() {
@@ -102,5 +102,14 @@ public class Localizacao implements EntidadeBase {
 	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
 	}
+
+	public String getNomeTabela() {
+		return nomeTabela;
+	}
+
+	public void setNomeTabela(String nomeTabela) {
+		this.nomeTabela = nomeTabela;
+	}
+	
 }
 	

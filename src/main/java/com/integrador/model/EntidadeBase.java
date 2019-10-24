@@ -2,6 +2,8 @@ package com.integrador.model;
 
 public interface EntidadeBase {
 
-	public long getId();
-	
+	public Long getId();
+	public void setId(Long id);
+	public String getNomeTabela();
+	public void setNomeTabela(String nomeTabela);
 }

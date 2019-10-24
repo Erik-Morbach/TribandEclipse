@@ -1,6 +1,6 @@
 package com.integrador.model;
 
-public abstract class Usuario {
+public abstract class Usuario{
 
 	private String nome;
 	private String email;
@@ -16,7 +16,7 @@ public abstract class Usuario {
 	public Usuario(){
 		
 	}
-
+	
 	public String getNome() {
 		return nome;
 	}

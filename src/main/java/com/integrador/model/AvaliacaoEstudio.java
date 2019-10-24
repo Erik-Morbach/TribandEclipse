@@ -2,7 +2,7 @@ package com.integrador.model;
 
 import java.sql.Date;
 
-public class AvaliacaoEstudio {
+public class AvaliacaoEstudio implements EntidadeBase{
 
 	private long idAvEstudio;
 	private int limpeza;
@@ -27,7 +27,8 @@ public class AvaliacaoEstudio {
 
 	//GETS E SETS
 	
-	public long getIdAvEstudio() {
+	@Override
+	public long getId() {
 		return idAvEstudio;
 	}
 

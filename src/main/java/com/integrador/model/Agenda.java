@@ -2,7 +2,7 @@ package com.integrador.model;
 
 import java.util.ArrayList;
 
-public class Agenda {
+public class Agenda implements EntidadeBase{
 
 	private long idAgenda;
 	private Usuario usuario;
@@ -20,8 +20,8 @@ public class Agenda {
 
 	//GETS E SETS
 	
-	
-	public long getIdAgenda() {
+	@Override
+	public long getId() {
 		return idAgenda;
 	}
 

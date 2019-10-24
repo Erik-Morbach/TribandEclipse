@@ -2,7 +2,7 @@ package com.integrador.model;
 import java.sql.Date;
 import java.util.ArrayList;
 
-public class Banda extends Usuario{
+public class Banda extends Usuario implements EntidadeBase{
 
 	private long idBanda;
 	private int integrantes;
@@ -22,6 +22,12 @@ public class Banda extends Usuario{
 
 	//GET E SETS
 	
+	@Override
+	public long getId() {
+		// TODO Auto-generated method stub
+		return this.idBanda;
+	}
+ 
 	public int getIntegrantes() {
 		return integrantes;
 	}
@@ -66,5 +72,8 @@ public class Banda extends Usuario{
 		this.agenda.addToAgenda(reserva);
 		return reserva;
 	}
+
+	
+
 	
 }

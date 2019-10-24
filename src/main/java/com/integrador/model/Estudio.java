@@ -3,7 +3,7 @@ package com.integrador.model;
 import java.sql.Date;
 import java.util.ArrayList;
 
-public class Estudio extends Usuario {
+public class Estudio extends Usuario implements EntidadeBase {
 
 	private long idEstudio;
 	private String cnpj;
@@ -26,6 +26,11 @@ public class Estudio extends Usuario {
 	
 	//GET E SETS
 
+	@Override
+	public long getId(){
+	return this.idEstudio;
+	}
+	
 	public ArrayList<Servico> getServicos(){
 		return this.servicos;
 	}

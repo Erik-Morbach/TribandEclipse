@@ -2,7 +2,7 @@ package com.integrador.model;
 
 import java.util.ArrayList;
 
-public class Servico {
+public class Servico implements EntidadeBase {
 
 	private long idServicos;
 	private String descricao;
@@ -21,8 +21,8 @@ public class Servico {
 		this.subServicos = subServicos;
 	}
 
-
-	public long getIdServicos() {
+	@Override
+	public long getId() {
 		return idServicos;
 	}
 

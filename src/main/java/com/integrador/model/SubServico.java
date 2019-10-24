@@ -1,6 +1,7 @@
 package com.integrador.model;
 
-public class SubServico {
+public class SubServico implements EntidadeBase {
+	
 	private Long idSubServico;
 	private String descricao;
 	private Servico servico;
@@ -14,8 +15,8 @@ public class SubServico {
 		this.servico = servico;
 	}
 	
-	
-	public Long getIdSubServico() {
+	@Override
+	public long getId() {
 		return idSubServico;
 	}
 	public void setIdSubServico(Long idSubServico) {

@@ -3,7 +3,7 @@ package com.integrador.model;
 import java.sql.Date;
 import java.sql.Time;
 
-public class Reserva {
+public class Reserva implements EntidadeBase{
 
 	private long idReserva;
 	private Date data;
@@ -26,8 +26,9 @@ public class Reserva {
 	public Reserva() {
 		super();
 	}
-
-	public long getIdReserva() {
+	
+	@Override
+	public long getId() {
 		return idReserva;
 	}
 

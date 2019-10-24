@@ -2,7 +2,7 @@ package com.integrador.model;
 
 import java.sql.Date;
 
-public class AvaliacaoBanda {
+public class AvaliacaoBanda implements EntidadeBase{
 
 	private long idAvBanda;
 	private int compComHorario;
@@ -27,7 +27,8 @@ public class AvaliacaoBanda {
 
 	//GETS E SETS;
 	
-	public long getIdAvBanda() {
+	@Override
+	public long getId() {
 		return idAvBanda;
 	}
 

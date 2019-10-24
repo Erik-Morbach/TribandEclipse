@@ -2,7 +2,7 @@ package com.integrador.model;
 
 import java.util.ArrayList;
 
-public class Chat {
+public class Chat implements EntidadeBase{
 
 	private long idChat;
 	private ArrayList<Mensagem> mensagens;
@@ -20,6 +20,11 @@ public class Chat {
 		super();
 	}
 
+	@Override
+	public long getId(){
+		return this.idChat;
+	}
+	
 	public ArrayList<Mensagem> getMensagens() {
 		return mensagens;
 	}

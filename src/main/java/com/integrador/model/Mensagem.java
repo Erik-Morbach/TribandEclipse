@@ -2,11 +2,11 @@ package com.integrador.model;
 
 import java.sql.Time;
 
-public class Mensagem { 
+public class Mensagem implements EntidadeBase{ 
 //para atualizaçções futuras o sistema de mensagens sera melhorado
 	
 	
-	private Long idMensagem;
+	private long idMensagem;
 	private String mensagem;
 	private Time horario;
 	private Usuario remetente;
@@ -30,8 +30,8 @@ public class Mensagem {
 	}
 
 
-
-	public Long getIdMensagem() {
+	@Override
+	public long getId() {
 		return idMensagem;
 	}
 	public void setIdMensagem(Long idMensagem) {

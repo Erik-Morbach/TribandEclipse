@@ -1,6 +1,6 @@
 package com.integrador.model;
 
-public class Localizacao {
+public class Localizacao implements EntidadeBase {
 
 	private long idLocalizacao;
 	private long cep;
@@ -29,8 +29,9 @@ public class Localizacao {
 	public Localizacao(){
 		
 	}
-
-	public long getIdLocalizacao() {
+	
+	@Override
+	public long getId() {
 		return idLocalizacao;
 	}
 

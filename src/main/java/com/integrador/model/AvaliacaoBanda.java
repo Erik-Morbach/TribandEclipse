@@ -9,8 +9,8 @@ public class AvaliacaoBanda implements EntidadeBase{
 	private Integer cuidadoComEquipamento;
 	private Date dataAvBanda;
 	private Banda banda;
-	private String nomeTabela = "avaliacao_banda";
-	
+	private final String nomeTabela = "avaliacao_banda";
+	private final int numeroAtributosTabela=5;
 
 	public AvaliacaoBanda(Long idAvBanda, Integer compComHorario, Integer cuidadoComEquipamento, Date dataAvBanda,
 			Banda banda) {
@@ -73,8 +73,8 @@ public class AvaliacaoBanda implements EntidadeBase{
 		return nomeTabela;
 	}
 
-	public void setNomeTabela(String nomeTabela) {
-		this.nomeTabela = nomeTabela;
+	public int getNumeroAtributosTabela() {
+		return numeroAtributosTabela;
 	}
 
 }

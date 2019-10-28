@@ -5,7 +5,8 @@ public class Foto implements EntidadeBase {
 	private String path;
 	private Banda banda;
 	private Estudio estudio;
-	private String nomeTabela = "foto";
+	private final String nomeTabela = "foto";
+	private final int numeroAtributosTabela=4;
 	
 	public Foto() { super(); }
 	public Foto(Long idFoto, String path, Banda banda, Estudio estudio) {
@@ -24,7 +25,7 @@ public class Foto implements EntidadeBase {
 	@Override
 	public Long getId() {
 		// TODO Auto-generated method stub
-		return null;
+		return idFoto;
 	}
 	@Override
 	public void setId(Long id) {
@@ -52,8 +53,8 @@ public class Foto implements EntidadeBase {
 	public String getNomeTabela() {
 		return nomeTabela;
 	}
-	public void setNomeTabela(String nomeTabela) {
-		this.nomeTabela = nomeTabela;
+	public int getNumeroAtributosTabela() {
+		return numeroAtributosTabela;
 	}
 
 }

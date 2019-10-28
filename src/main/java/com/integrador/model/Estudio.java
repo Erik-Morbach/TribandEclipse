@@ -16,7 +16,8 @@ public class Estudio  implements Usuario,EntidadeBase {
 	private ArrayList<Foto> fotos;
 	private ArrayList<AvaliacaoEstudio> avaliacoes;
 	private ArrayList<Servico> servicos;
-	private String nomeTabela = "estudio";
+	private final String nomeTabela = "estudio";
+	private final int numeroAtributosTabela=8;
 	
 	public Estudio(Long idEstudio, String nome, String email, String senha, String cnpj, Localizacao localizacao,
 			Foto fotoPerfil, ArrayList<Foto> fotos, ArrayList<AvaliacaoEstudio> avaliacoes, ArrayList<Servico> servicos,
@@ -116,8 +117,8 @@ public class Estudio  implements Usuario,EntidadeBase {
 	public String getNomeTabela() {
 		return nomeTabela;
 	}
-	public void setNomeTabela(String nomeTabela) {
-		this.nomeTabela = nomeTabela;
+	public int getNumeroAtributosTabela() {
+		return numeroAtributosTabela;
 	}
 	public Servico addServico(Servico novo) {
 		this.servicos.add(novo);

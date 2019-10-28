@@ -8,8 +8,8 @@ public class Agenda implements EntidadeBase{
 	private Estudio estudio;
 	private Banda banda;
 	private ArrayList<Reserva> reservas;
-	private String nomeTabela = "agenda";
-
+	private final String nomeTabela = "agenda";
+	private final int numeroAtributosTabela = 3;
 	
 
 	public Agenda(Long idAgenda, Estudio estudio, Banda banda, ArrayList<Reserva> reservas) {
@@ -59,18 +59,18 @@ public class Agenda implements EntidadeBase{
 		this.reservas = reservas;
 	}
 	
-
-	
-	//OUTROS METODOS
-	
-
 	public String getNomeTabela() {
 		return nomeTabela;
 	}
 
-	public void setNomeTabela(String nomeTabela) {
-		this.nomeTabela = nomeTabela;
+	public int getNumeroAtributosTabela() {
+		return numeroAtributosTabela;
 	}
+	
+	
+	//OUTROS METODOS
+
+
 
 	public Reserva addToAgenda(Reserva reserva) {
 		this.reservas.add(reserva);

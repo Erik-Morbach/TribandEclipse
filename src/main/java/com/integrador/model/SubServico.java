@@ -5,7 +5,8 @@ public class SubServico implements EntidadeBase {
 	private Long idSubServico;
 	private String descricao;
 	private Servico servico;
-	private String nomeTabela = "subservico";
+	private final String nomeTabela = "subservico";
+	private final int numeroAtributosTabela=3;
 	
 	public SubServico(){ super(); }
 	public SubServico(Long idSubServico, String descricao, Servico servico) {
@@ -40,9 +41,8 @@ public class SubServico implements EntidadeBase {
 	public String getNomeTabela() {
 		return nomeTabela;
 	}
-	public void setNomeTabela(String nomeTabela) {
-		this.nomeTabela = nomeTabela;
+	public int getNumeroAtributosTabela() {
+		return numeroAtributosTabela;
 	}
-	
 
 }

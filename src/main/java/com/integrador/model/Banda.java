@@ -13,12 +13,12 @@ public class Banda  implements Usuario, EntidadeBase{
 	private Agenda agenda;
 	private ArrayList<Foto> fotos;
 	private ArrayList<AvaliacaoBanda> avaliacoes;
-	private String nomeTabela = "banda";
-	
+	private final String nomeTabela = "banda";
+	private final int numeroAtributosTabela=7;
 
 	
-	public Banda(Long idBanda, String nome, String email, String senha, Integer integrantes, Foto fotoPerfil,
-			ArrayList<Foto> fotos, ArrayList<AvaliacaoBanda> avaliacoes, Agenda agenda) {
+	public Banda(Long idBanda, String nome, String email, String senha, Integer integrantes, Foto fotoPerfil, Agenda agenda,
+			ArrayList<Foto> fotos, ArrayList<AvaliacaoBanda> avaliacoes) {
 		super();
 		this.idBanda = idBanda;
 		this.nome = nome;
@@ -100,8 +100,8 @@ public class Banda  implements Usuario, EntidadeBase{
 	public String getNomeTabela() {
 		return nomeTabela;
 	}
-	public void setNomeTabela(String nomeTabela) {
-		this.nomeTabela = nomeTabela;
+	public int getNumeroAtributosTabela() {
+		return numeroAtributosTabela;
 	}
 	public AvaliacaoBanda addAvaliacao(AvaliacaoBanda av){
 		this.avaliacoes.add(av);

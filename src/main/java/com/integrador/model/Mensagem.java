@@ -10,7 +10,8 @@ public class Mensagem implements EntidadeBase{
 	private String mensagem;
 	private Time horario;
 	private Chat chat;
-	private String nomeTabela = "mensagem";
+	private final String nomeTabela = "mensagem";
+	private final int numeroAtributosTabela=4;
 	
 	public Mensagem(){ super(); }
 	public Mensagem(Long idMensagem, String mensagem, Time horario, Chat chat) {
@@ -55,8 +56,8 @@ public class Mensagem implements EntidadeBase{
 	public String getNomeTabela() {
 		return nomeTabela;
 	}
-	public void setNomeTabela(String nomeTabela) {
-		this.nomeTabela = nomeTabela;
+	public int getNumeroAtributosTabela() {
+		return numeroAtributosTabela;
 	}
 
 }

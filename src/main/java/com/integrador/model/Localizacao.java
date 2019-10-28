@@ -11,7 +11,8 @@ public class Localizacao implements EntidadeBase {
 	private Integer numero;
 	private Double latitude;
 	private Double longitude;
-	private String nomeTabela = "localizacao";
+	private final String nomeTabela = "localizacao";
+	private final int numeroAtributosTabela=9;
 	
 	public Localizacao(Long idLocalizacao, Long cep, String estado, String cidade, String bairro, String rua,
 			Integer numero, Double latitude, Double longitude) {
@@ -107,8 +108,8 @@ public class Localizacao implements EntidadeBase {
 		return nomeTabela;
 	}
 
-	public void setNomeTabela(String nomeTabela) {
-		this.nomeTabela = nomeTabela;
+	public int getNumeroAtributosTabela() {
+		return numeroAtributosTabela;
 	}
 	
 }

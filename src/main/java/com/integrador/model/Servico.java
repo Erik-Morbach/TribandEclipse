@@ -8,8 +8,8 @@ public class Servico implements EntidadeBase {
 	private String descricao;
 	private Estudio estudio;
 	private ArrayList<SubServico> subServicos;
-	private String nomeTabela = "servico";
-	
+	private final String nomeTabela = "servico";
+	private final int numeroAtributosTabela=3;
 
 	public Servico() {
 		super();
@@ -52,8 +52,8 @@ public class Servico implements EntidadeBase {
 	public String getNomeTabela() {
 		return nomeTabela;
 	}
-	public void setNomeTabela(String nomeTabela) {
-		this.nomeTabela = nomeTabela;
+	public int getNumeroAtributosTabela() {
+		return numeroAtributosTabela;
 	}
 	// Outros Metodos
 	public SubServico addSubServico(SubServico novo){

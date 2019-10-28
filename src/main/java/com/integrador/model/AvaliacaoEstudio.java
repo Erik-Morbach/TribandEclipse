@@ -11,11 +11,11 @@ public class AvaliacaoEstudio implements EntidadeBase{
 	private Integer atendimento;
 	private Date data;
 	private Estudio estudio;
-	private String nomeTabela = "avaliacao_estudio";
+	private final String nomeTabela = "avaliacao_estudio";
+	private final int numeroAtributosTabela=7;
+	
 	
 	public AvaliacaoEstudio() { super(); } 
-	
-
 	public AvaliacaoEstudio(Long idAvEstudio, Integer limpeza, Integer qualidadeEquip, Integer compComHorario,
 			Integer atendimento, Date data, Estudio estudio) {
 		super();
@@ -93,10 +93,10 @@ public class AvaliacaoEstudio implements EntidadeBase{
 		return nomeTabela;
 	}
 
-
-	public void setNomeTabela(String nomeTabela) {
-		this.nomeTabela = nomeTabela;
+	public int getNumeroAtributosTabela() {
+		return numeroAtributosTabela;
 	}
+
 	
 	//OUTROS METODOS
 	

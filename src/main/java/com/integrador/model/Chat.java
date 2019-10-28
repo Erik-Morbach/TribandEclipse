@@ -8,8 +8,8 @@ public class Chat implements EntidadeBase{
 	private Banda banda;
 	private Estudio estudio;
 	private ArrayList<Mensagem> mensagens;
-	private String nomeTabela = "chat";
-	
+	private final String nomeTabela = "chat";
+	private final int numeroAtributosTabela=3;
 
 	public Chat(Long idChat, Banda banda, Estudio estudio, ArrayList<Mensagem> mensagens) {
 		super();
@@ -59,8 +59,8 @@ public class Chat implements EntidadeBase{
 		return nomeTabela;
 	}
 
-	public void setNomeTabela(String nomeTabela) {
-		this.nomeTabela = nomeTabela;
+	public int getNumeroAtributosTabela() {
+		return numeroAtributosTabela;
 	}
 
 	public void addMensagem(Mensagem mensagem) {

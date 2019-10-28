@@ -11,14 +11,12 @@ public class Reserva implements EntidadeBase{
 	private Time horaFinal;
 	private Banda banda;
 	private Agenda agenda;
-	private String nomeTabela = "reserva";
+	private final String nomeTabela = "reserva";
+	private final int numeroAtributosTabela=6;
 	
 	public Reserva() {
 		super();
 	}
-
-	
-
 	public Reserva(Long idReserva, Date data, Time horaInicio, Time horaFinal, Banda banda, Agenda agenda) {
 		super();
 		this.idReserva = idReserva;
@@ -82,9 +80,8 @@ public class Reserva implements EntidadeBase{
 
 
 
-	public void setNomeTabela(String nomeTabela) {
-		this.nomeTabela = nomeTabela;
+	public int getNumeroAtributosTabela() {
+		return numeroAtributosTabela;
 	}
-
 	
 }

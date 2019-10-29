@@ -9,4 +9,9 @@ public class EstudioDAO extends GenericoDAO<Estudio>{
 		// TODO Auto-generated constructor stub
 	}
 
+	public Estudio buscarPorEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -21,11 +21,11 @@ import java.util.List;
 @RequestMapping("/")
 public class GenericoController<P extends EntidadeBase,T extends GenericoDAO<P>> {
 
-	private T t;
+	protected T t;
 	
 	//BUSCAR TODOS
 	
-	@GetMapping
+	@GetMapping("/todos")
 	public ResponseEntity<List<P>> buscarTodos(){
 		return ResponseEntity.ok(this.t.buscarTodos());
 	} 
@@ -33,13 +33,13 @@ public class GenericoController<P extends EntidadeBase,T extends GenericoDAO<P>>
 	//BUSCAR POR ID
 	
 	@GetMapping("/{id}")
-	public P BuscarPorId(@PathVariable Long id){
-		return this.t.buscarPorId(id);
+	public ResponseEntity<P> BuscarPorId(@PathVariable Long id){
+		return ResponseEntity.ok(this.t.buscarPorId(id));
 	}
 	
 	//SALVAR
 	
-	@PostMapping
+	@PostMapping("/add")
 	public ResponseEntity<P> Adicionar(@RequestBody P p){
 		return ResponseEntity.ok(this.t.salvar(p));
 	}
@@ -53,7 +53,7 @@ public class GenericoController<P extends EntidadeBase,T extends GenericoDAO<P>>
 	
 	//EDITAR
 	
-	@PutMapping
+	@PutMapping("/put")
 	public ResponseEntity<P> Editar(@RequestBody P p){
 		return ResponseEntity.ok(this.t.editar(p));
 	}

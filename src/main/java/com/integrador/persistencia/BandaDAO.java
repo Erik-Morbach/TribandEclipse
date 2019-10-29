@@ -9,6 +9,11 @@ public class BandaDAO extends GenericoDAO<Banda>{
 		// TODO Auto-generated constructor stub
 	}
 
+	public Banda buscarPorEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 }

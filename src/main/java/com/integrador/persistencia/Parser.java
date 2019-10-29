@@ -6,52 +6,50 @@ import org.springframework.data.util.Pair;
 
 import com.integrador.model.EntidadeBase;
 
-import antlr.collections.List;
+import java.util.List;
 
 public class Parser {
 	public Parser() {
-		
 	}
-	// Retorna o nome do atributo no banco e se é uma chave estrangeira
-	public Pair<String,Boolean> geraNome(Field w) {
-		Pair<String,Boolean> resposta = null;
-		
-		if(List.class.isAssignableFrom(w.getClass())) return resposta;
-		
-		String first = "";
-		Boolean second = false;
-		if(EntidadeBase.class.isAssignableFrom(w.getClass())) {
-			second = true;
-			first +="id_";
-		}
-		char[] nomeAtributo = w.getName().toCharArray();
-		for(char k: nomeAtributo) {
-			if(Character.isUpperCase(k)) first+="_";
-			first+=Character.toLowerCase(k);
-		}
-		
 
-		resposta = Pair.of(first, second);
-		return resposta;
+	public boolean ehChaveEstrangeira(Field w) {
+		return EntidadeBase.class.isAssignableFrom(w.getType());
 	}
-	
-	public Pair<String,Object> geraNomeObjeto(Field w, Object q){
-		Pair<String,Boolean> nome = geraNome(w);
-		Pair<String,Object> resposta = null;
-	
-		if(nome==null) return resposta;
+
+	// Retorna o nome do atributo no banco e se é uma chave estrangeira
+	public String geraNome(Field w) {
+		String resposta = null;
 		
-		String first = nome.getFirst();
-		Object second = q;
-	
-		if(nome.getSecond()) {
-			second = ((EntidadeBase)q).getId();
+		
+		if (List.class.isAssignableFrom(w.getType())) {
+			return resposta;
 		}
-		
-		resposta = Pair.of(first, second);
+
+		resposta = "";
+
+		if (ehChaveEstrangeira(w)) {
+			resposta += "id_"+w.getType().getSimpleName().toLowerCase();
+		} else {
+			char[] nomeAtributo = w.getName().toCharArray();
+			for (char k : nomeAtributo) {
+				if (Character.isUpperCase(k))
+					resposta += "_";
+				resposta += Character.toLowerCase(k);
+			}
+		}
 		return resposta;
 	}
-	
-	
-	
+
+	public Object geraObjeto(Field w, Object q) {
+		Object ans = q;
+		if (ans == null)
+			return ans;
+
+		if (ehChaveEstrangeira(w)) {
+			ans = ((EntidadeBase) q).getId();
+		}
+
+		return ans;
+	}
+
 }

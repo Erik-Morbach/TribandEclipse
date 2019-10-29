@@ -19,57 +19,48 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 	private ConexaoMysql conexao;
 	private Field atributos[];
 	private T object;
+	private String[] nomeAtributosTabela;
+	private Object[] valorAtributosTabela;
 	private String nomeTabela;
 	private int numeroAtributosTabela;
 	private int numeroAtributosClasse;
 	private int indiceQuery;
-	
+	private Parser parser;
 	public GenericoDAO(T auxiliar) {
 		super();
 		this.conexao = new ConexaoMysql("localhost", "3306", "root", "BDcasa123", "triband");
 		atributos = auxiliar.getClass().getDeclaredFields();
-		Arrays.sort(atributos, new Comparator<Field>() {
-			@Override
-			public int compare(Field o1, Field o2) {
-				return o1.getName().compareToIgnoreCase(o2.getName());
-			}
-		});
 
 		nomeTabela = auxiliar.getNomeTabela();
 		numeroAtributosTabela = auxiliar.getNumeroAtributosTabela();
 		numeroAtributosClasse = atributos.length;
 		object = auxiliar;
+		parser = new Parser();
+
+		nomeAtributosTabela = new String[numeroAtributosTabela];
+		valorAtributosTabela = new Object[numeroAtributosTabela];
+		int idx = 0;
+		for(int i=0;i<numeroAtributosClasse;i++) {
+			atributos[i].setAccessible(true);       // necessario para podermos pegar o valor do atributo
+			String ans = parser.geraNome(atributos[i]);
+			if(ans!=null) nomeAtributosTabela[idx++] = ans;
+			else atributos[i] = null;
+		}
+
+	
 	}
 
 	private PreparedStatement adicionaAtributo(PreparedStatement statement, T t, int idx) {
 
-		atributos[idx-1].setAccessible(true); // necessario para podermos pegar o valor do atributo
-		
-		// se o atributo for uma lista ele não deve ser tratado;
-		
-		
-		
 		try {
-			Object valor = atributos[idx-1].get(t); // pega o valor do atributo no objeto t
-
-			// verifica se o atributo é na verdade uma chave estrangeira
-			if (valor != null) {
-				if (valor instanceof EntidadeBase)
-					valor = ((EntidadeBase) valor).getId();
-				if(valor instanceof List)
-					return statement;
-			}
-			// se ele herda da Entidade Base, obviamente é um model
-			// sendo um model ele deve ser tratado como uma chave estrangeira
-
-			statement.setObject(indiceQuery, valor);
-			indiceQuery++;
+			Object valor = valorAtributosTabela[idx-1]; // pega o valor do atributo no objeto t
+			
+			statement.setObject(idx, valor);
+			
+		
 		} catch (SecurityException e) {
 			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -84,28 +75,38 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 	public T salvar(T t) {
 		this.conexao.abrirConexao();
 
-		String sqlInsert = "INSERT INTO " + nomeTabela + " VALUES(?";
-
+		String sqlInsertPart1 = "(";
+		String sqlInsertPart2 = "(?";
+		int idx = 0;
+		for(int i=1;i<=numeroAtributosTabela;i++) {
+			
+			while(atributos[idx]==null) idx++;
+			
+			sqlInsertPart1+=nomeAtributosTabela[i-1];
+			
+			valorAtributosTabela[i-1] = parser.geraObjeto(atributos[idx], t);
+			System.out.println(nomeAtributosTabela[i-1]+" -> "+valorAtributosTabela[i-1]);
+			if(i<numeroAtributosTabela) sqlInsertPart1+=","; 
+				
+			if(i>1) sqlInsertPart2+=",?";
+		}
 		// adiciona os "?" na query de acordo com o numero de atributos
-		for (int i = 1; i < numeroAtributosTabela; i++)
-			sqlInsert += ",?";
-
-		sqlInsert += ");";
-
+		
+		String sqlInsert ="INSERT INTO "+nomeTabela +sqlInsertPart1 +") VALUES"+ sqlInsertPart2+");";
+		
 		try {
 			PreparedStatement statement = (PreparedStatement) this.conexao.getConexao().prepareStatement(sqlInsert,
 					PreparedStatement.RETURN_GENERATED_KEYS);
-			indiceQuery = 1;
+		
 
-			for (int i = 0; i < numeroAtributosClasse; i++) {
-
-				statement = adicionaAtributo(statement, t, i+1);
+			for (int i = 1; i <= numeroAtributosTabela; i++) {
+				
+				statement = adicionaAtributo(statement, t, i);
 
 			}
-
+			System.out.println(sqlInsert);
 			statement.executeUpdate();
 			ResultSet rs = statement.getGeneratedKeys();
-			int id = 1;
 			
 			if(rs.next()) 
 				t.setId(rs.getLong(1));

@@ -16,6 +16,7 @@ import com.integrador.model.Reserva;
 import com.integrador.persistencia.AgendaDAO;
 import com.integrador.persistencia.BandaDAO;
 import com.integrador.persistencia.FotoDAO;
+import com.integrador.persistencia.Parser;
 
 @SpringBootApplication
 public class TribandApplication {
@@ -23,9 +24,7 @@ public class TribandApplication {
 	public static void main(String[] args) {
 		
 		
-
-		/*
-
+		
 		BandaDAO dao = new BandaDAO(new Banda());
 		FotoDAO fotoDAO = new FotoDAO(new Foto());
 		
@@ -38,17 +37,19 @@ public class TribandApplication {
 		Banda a = new Banda((long) 0,"teste3","@gmail.com","1234",3,foto,agenda,new ArrayList<Foto>(),new ArrayList<AvaliacaoBanda>());
 		
 
-		a = dao.salvar(a);		System.out.println(a.getId());
-	
+		a = dao.salvar(a);
+		
+		System.out.println(a.getId());
+	/*
 		agenda.setBanda(a);
 		foto.setBanda(a);
 		
-		agendaDAO.edita(agenda);
-		fotoDAO.edita(foto);
-		dao.edita(a);
+		agendaDAO.editar(agenda);
+		fotoDAO.editar(foto);
+		dao.editar(a);
 		*/
 		
-		SpringApplication.run(TribandApplication.class, args);
+		//SpringApplication.run(TribandApplication.class, args);
 	}
 
 }

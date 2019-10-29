@@ -24,7 +24,7 @@ public class TribandApplication {
 	public static void main(String[] args) {
 		
 		
-		
+		/*	
 		BandaDAO dao = new BandaDAO(new Banda());
 		FotoDAO fotoDAO = new FotoDAO(new Foto());
 		
@@ -40,7 +40,7 @@ public class TribandApplication {
 		a = dao.salvar(a);
 		
 		System.out.println(a.getId());
-	/*
+	
 		agenda.setBanda(a);
 		foto.setBanda(a);
 		
@@ -49,7 +49,7 @@ public class TribandApplication {
 		dao.editar(a);
 		*/
 		
-		//SpringApplication.run(TribandApplication.class, args);
+		SpringApplication.run(TribandApplication.class, args);
 	}
 
 }

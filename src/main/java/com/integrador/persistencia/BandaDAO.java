@@ -17,13 +17,11 @@ public class BandaDAO extends GenericoDAO<Banda>{
 		super.conexao.abrirConexao();
 		Banda banda = null;
 		
-		String sqlBuscar = "SELECT banda b INNER JOIN agenda a ON b.id_banda=a.id_banda "
-			                         	+ "INNER JOIN foto f ON b.id_foto=f.id_foto"
-			                         	+ "INNER JOIN  WHERE email=?;";
+		String sqlBuscar = "SELECT * FROM banda INNER JOIN agenda ON agenda.id_banda = banda.id_banda WHERE banda.email=?;";
 		PreparedStatement statement;
 		
 		 try {
-			statement = (PreparedStatement) this.conexao.getConexao().prepareStatement(sqlBuscar);
+			statement = (PreparedStatement) super.conexao.getConexao().prepareStatement(sqlBuscar);
 			statement.setString(1,email);
 			ResultSet rs=statement.executeQuery();
 			
@@ -31,21 +29,25 @@ public class BandaDAO extends GenericoDAO<Banda>{
 		            banda = new Banda();
 		            banda.setId(rs.getLong("id_banda"));
 		            banda.setNome(rs.getString("nome"));
+		            banda.setSenha(rs.getString("senha"));
+		            banda.setEmail(rs.getString("email"));
+		            banda.setIntegrantes(rs.getInt("integrantes"));
 		            
-		            
-		            
+		            //agenda da banda
 		            
 		            banda.getAgenda().setId(rs.getLong("id_agenda"));
+		            banda.getAgenda().setBanda(banda);
 		        }
 
 			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
+		} finally {
+	   		 this.conexao.fecharConexao();
+	   	 }
 
-		
-		return null;
+		return banda;
 	}
 
 	

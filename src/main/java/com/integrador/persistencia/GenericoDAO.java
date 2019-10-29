@@ -26,6 +26,7 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 	private int numeroAtributosClasse;
 	private int indiceQuery;
 	private Parser parser;
+	
 	public GenericoDAO(T auxiliar) {
 		super();
 		this.conexao = new ConexaoMysql("localhost", "3306", "root", "BDcasa123", "triband");

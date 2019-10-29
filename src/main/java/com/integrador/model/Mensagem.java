@@ -2,27 +2,30 @@ package com.integrador.model;
 
 import java.sql.Time;
 
-public class Mensagem implements EntidadeBase{ 
+public class Mensagem extends EntidadeBase {
 //para atualizaçções futuras o sistema de mensagens sera melhorado
-	
-	
-	private Long idMensagem;
-	private String mensagem;
-	private Time horario;
+
 	private Chat chat;
-	private final String nomeTabela = "mensagem";
-	private final int numeroAtributosTabela=4;
-	
-	public Mensagem(){ super(); }
-	public Mensagem(Long idMensagem, String mensagem, Time horario, Chat chat) {
+	private Time horario;
+	private Long idMensagem;
+	private String conteudo;
+
+	public Mensagem() {
 		super();
-		this.idMensagem = idMensagem;
-		this.mensagem = mensagem;
-		this.horario = horario;
-		this.chat = chat;
+
+		nomeTabela = "mensagem";
+		numeroAtributosTabela = 4;
 	}
 
 
+	public Mensagem(Chat chat, Time horario, Long idMensagem, String conteudo) {
+		this();
+		this.chat = chat;
+		this.horario = horario;
+		this.idMensagem = idMensagem;
+		this.conteudo = conteudo;
+
+	}
 
 
 	@Override
@@ -30,34 +33,38 @@ public class Mensagem implements EntidadeBase{
 		// TODO Auto-generated method stub
 		return this.idMensagem;
 	}
+
 	@Override
 	public void setId(Long id) {
 		// TODO Auto-generated method stub
 		this.idMensagem = id;
 	}
-	public String getMensagem() {
-		return mensagem;
+
+
+	public String getConteudo() {
+		return conteudo;
 	}
-	public void setMensagem(String mensagem) {
-		this.mensagem = mensagem;
+
+
+	public void setConteudo(String conteudo) {
+		this.conteudo = conteudo;
 	}
+
+
 	public Time getHorario() {
 		return horario;
 	}
+
 	public void setHorario(Time horario) {
 		this.horario = horario;
 	}
+
 	public Chat getChat() {
 		return chat;
 	}
+
 	public void setChat(Chat chat) {
 		this.chat = chat;
-	}
-	public String getNomeTabela() {
-		return nomeTabela;
-	}
-	public int getNumeroAtributosTabela() {
-		return numeroAtributosTabela;
 	}
 
 }

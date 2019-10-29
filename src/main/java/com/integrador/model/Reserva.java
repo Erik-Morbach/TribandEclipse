@@ -3,29 +3,36 @@ package com.integrador.model;
 import java.sql.Date;
 import java.sql.Time;
 
-public class Reserva implements EntidadeBase{
+public class Reserva extends EntidadeBase{
 
-	private Long idReserva;
-	private Date data;
-	private Time horaInicio;
-	private Time horaFinal;
-	private Banda banda;
 	private Agenda agenda;
-	private final String nomeTabela = "reserva";
-	private final int numeroAtributosTabela=6;
+	private Banda banda;
+	private Date dataReserva;
+	private Time horarioFinal;
+	private Time horarioInicio;
+	private Long idReserva;
 	
 	public Reserva() {
 		super();
+
+		nomeTabela = "reserva";
+		numeroAtributosTabela = 6;
 	}
-	public Reserva(Long idReserva, Date data, Time horaInicio, Time horaFinal, Banda banda, Agenda agenda) {
-		super();
-		this.idReserva = idReserva;
-		this.data = data;
-		this.horaInicio = horaInicio;
-		this.horaFinal = horaFinal;
-		this.banda = banda;
+	
+
+
+
+	public Reserva(Agenda agenda, Banda banda, Date dataReserva, Time horarioFinal, Time horarioInicio,
+			Long idReserva) {
+		this();
 		this.agenda = agenda;
+		this.banda = banda;
+		this.dataReserva = dataReserva;
+		this.horarioFinal = horarioFinal;
+		this.horarioInicio = horarioInicio;
+		this.idReserva = idReserva;
 	}
+
 
 
 
@@ -41,24 +48,48 @@ public class Reserva implements EntidadeBase{
 		// TODO Auto-generated method stub
 		this.idReserva = id;
 	}
-	public Date getData() {
-		return data;
+	public Date getDataReserva() {
+		return dataReserva;
 	}
-	public void setData(Date data) {
-		this.data = data;
+
+
+
+
+	public void setDataReserva(Date dataReserva) {
+		this.dataReserva = dataReserva;
 	}
-	public Time getHoraInicio() {
-		return horaInicio;
+
+
+
+
+	public Time getHorarioFinal() {
+		return horarioFinal;
 	}
-	public void setHoraInicio(Time horaInicio) {
-		this.horaInicio = horaInicio;
+
+
+
+
+	public void setHorarioFinal(Time horarioFinal) {
+		this.horarioFinal = horarioFinal;
 	}
-	public Time getHoraFinal() {
-		return horaFinal;
+
+
+
+
+	public Time getHorarioInicio() {
+		return horarioInicio;
 	}
-	public void setHoraFinal(Time horaFinal) {
-		this.horaFinal = horaFinal;
+
+
+
+
+	public void setHorarioInicio(Time horarioInicio) {
+		this.horarioInicio = horarioInicio;
 	}
+
+
+
+
 	public Banda getBanda() {
 		return banda;
 	}
@@ -70,18 +101,6 @@ public class Reserva implements EntidadeBase{
 	}
 	public void setAgenda(Agenda agenda) {
 		this.agenda = agenda;
-	}
-
-
-
-	public String getNomeTabela() {
-		return nomeTabela;
-	}
-
-
-
-	public int getNumeroAtributosTabela() {
-		return numeroAtributosTabela;
 	}
 	
 }

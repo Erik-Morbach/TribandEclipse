@@ -1,10 +1,18 @@
 package com.integrador.model;
 
-public interface EntidadeBase {
+public abstract class EntidadeBase {
+	protected String nomeTabela;
+	protected int numeroAtributosTabela;
 
-	public Long getId();
-	public void setId(Long id);
-	
-	public String getNomeTabela();
-	public int getNumeroAtributosTabela();
+	public String getNomeTabela() {
+		return nomeTabela;
+	}
+
+	public int getNumeroAtributosTabela() {
+		return numeroAtributosTabela;
+	}
+
+	public abstract Long getId();
+
+	public abstract void setId(Long id);
 }

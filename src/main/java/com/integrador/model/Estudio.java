@@ -3,26 +3,24 @@ package com.integrador.model;
 import java.sql.Date;
 import java.util.ArrayList;
 
-public class Estudio  implements Usuario,EntidadeBase {
+public class Estudio extends EntidadeBase implements Usuario {
 
-	private Long idEstudio;
-	private String nome;
-	private String email;
-	private String senha;
-	private String cnpj;
-	private Foto fotoPerfil;
-	private Localizacao localizacao;
 	private Agenda agenda;
+	private String cnpj;
+	private String email;
+	private Foto fotoPerfil;
+	private Long idEstudio;
+	private Localizacao localizacao;
+	private String nome;
+	private String senha;
 	private ArrayList<Foto> fotos;
 	private ArrayList<AvaliacaoEstudio> avaliacoes;
 	private ArrayList<Servico> servicos;
-	private final String nomeTabela = "estudio";
-	private final int numeroAtributosTabela=8;
 	
 	public Estudio(Long idEstudio, String nome, String email, String senha, String cnpj, Localizacao localizacao,
 			Foto fotoPerfil, ArrayList<Foto> fotos, ArrayList<AvaliacaoEstudio> avaliacoes, ArrayList<Servico> servicos,
 			Agenda agenda) {
-		super();
+		this();
 		this.idEstudio = idEstudio;
 		this.nome = nome;
 		this.email = email;
@@ -34,9 +32,13 @@ public class Estudio  implements Usuario,EntidadeBase {
 		this.avaliacoes = avaliacoes;
 		this.servicos = servicos;
 		this.agenda = agenda;
+
 	}
 	public Estudio(){
 		super();
+
+		nomeTabela = "estudio";
+		numeroAtributosTabela = 8;
 	}
 	
 	//GET E SETS
@@ -108,18 +110,11 @@ public class Estudio  implements Usuario,EntidadeBase {
 	public void setAgenda(Agenda agenda) {
 		this.agenda = agenda;
 	}
-
-	
 	
 	//OUTROS METODOS
 
 	
-	public String getNomeTabela() {
-		return nomeTabela;
-	}
-	public int getNumeroAtributosTabela() {
-		return numeroAtributosTabela;
-	}
+	
 	public Servico addServico(Servico novo) {
 		this.servicos.add(novo);
 		return novo;
@@ -134,8 +129,8 @@ public class Estudio  implements Usuario,EntidadeBase {
 		return novo;
 	}
 	
-	public AvaliacaoBanda Avaliar(int compH,int cuidEquip, Date data,Banda banda){
-		AvaliacaoBanda avb = new AvaliacaoBanda(new Long(0), compH,cuidEquip,data,banda);
+	public AvaliacaoBanda Avaliar(int compromissoHorario,int cuidadoEquipamento, Date dataAvaliacaoBanda,Banda banda){
+		AvaliacaoBanda avb = new AvaliacaoBanda(banda,compromissoHorario,cuidadoEquipamento,dataAvaliacaoBanda,(long)0);
 		banda.addAvaliacao(avb);
 		return avb;
 	}

@@ -1,22 +1,20 @@
 package com.integrador.model;
 
-public class Localizacao implements EntidadeBase {
+public class Localizacao extends EntidadeBase {
 
-	private Long idLocalizacao;
-	private Long cep;
-	private String estado;
-	private String cidade;
 	private String bairro;
-	private String rua;
-	private Integer numero;
+	private Long cep;
+	private String cidade;
+	private String estado;
+	private Long idLocalizacao;
 	private Double latitude;
 	private Double longitude;
-	private final String nomeTabela = "localizacao";
-	private final int numeroAtributosTabela=9;
+	private Integer numero;
+	private String rua;
 	
 	public Localizacao(Long idLocalizacao, Long cep, String estado, String cidade, String bairro, String rua,
 			Integer numero, Double latitude, Double longitude) {
-		super();
+		this();
 		this.idLocalizacao = idLocalizacao;
 		this.cep = cep;
 		this.estado = estado;
@@ -26,10 +24,14 @@ public class Localizacao implements EntidadeBase {
 		this.numero = numero;
 		this.latitude = latitude;
 		this.longitude = longitude;
+
 	}
 
 	public Localizacao(){
 		super();
+
+		nomeTabela = "localizacao";
+		numeroAtributosTabela = 9;
 	}
 	
 	@Override
@@ -104,13 +106,6 @@ public class Localizacao implements EntidadeBase {
 		this.longitude = longitude;
 	}
 
-	public String getNomeTabela() {
-		return nomeTabela;
-	}
-
-	public int getNumeroAtributosTabela() {
-		return numeroAtributosTabela;
-	}
 	
 }
 	

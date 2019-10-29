@@ -2,24 +2,22 @@ package com.integrador.model;
 import java.sql.Date;
 import java.util.ArrayList;
 
-public class Banda  implements Usuario, EntidadeBase{
+public class Banda extends EntidadeBase implements Usuario {
 
-	private Long idBanda;
-	private String nome;
-	private String email;
-	private String senha;
-	private Integer integrantes;
-	private Foto fotoPerfil;
 	private Agenda agenda;
+	private String email;
+	private Foto fotoPerfil;
+	private Long idBanda;
+	private Integer integrantes;
+	private String nome;
+	private String senha;
 	private ArrayList<Foto> fotos;
 	private ArrayList<AvaliacaoBanda> avaliacoes;
-	private final String nomeTabela = "banda";
-	private final int numeroAtributosTabela=7;
 
 	
 	public Banda(Long idBanda, String nome, String email, String senha, Integer integrantes, Foto fotoPerfil, Agenda agenda,
 			ArrayList<Foto> fotos, ArrayList<AvaliacaoBanda> avaliacoes) {
-		super();
+		this();
 		this.idBanda = idBanda;
 		this.nome = nome;
 		this.email = email;
@@ -29,13 +27,16 @@ public class Banda  implements Usuario, EntidadeBase{
 		this.fotos = fotos;
 		this.avaliacoes = avaliacoes;
 		this.agenda = agenda;
+
 	}
 	public Banda(){
 		super();
+
+		nomeTabela = "banda";
+		numeroAtributosTabela = 7;
 	}
 
 	//GET E SETS
-	
 	public String getNome() {
 		return nome;
 	}
@@ -92,25 +93,19 @@ public class Banda  implements Usuario, EntidadeBase{
 	public void setAgenda(Agenda agenda) {
 		this.agenda = agenda;
 	}
-	
 	//OUTROS METODOS
 	
 
 
-	public String getNomeTabela() {
-		return nomeTabela;
-	}
-	public int getNumeroAtributosTabela() {
-		return numeroAtributosTabela;
-	}
+	
 	public AvaliacaoBanda addAvaliacao(AvaliacaoBanda av){
 		this.avaliacoes.add(av);
 		return av;
 	}
 	
 	
-	public AvaliacaoEstudio Avaliar(Integer limpeza,Integer qualiEquip,Integer compComHorario,Integer atendimento, Date data,Estudio estudio){
-		AvaliacaoEstudio ave = new AvaliacaoEstudio(new Long(0),limpeza,qualiEquip,compComHorario,atendimento,data,estudio);
+	public AvaliacaoEstudio Avaliar(Integer limpeza,Integer qualidadeEquipamento,Integer compromissoHorario,Integer atendimento, Date data,Estudio estudio){
+		AvaliacaoEstudio ave = new AvaliacaoEstudio(atendimento,compromissoHorario,data,estudio,(long)0,limpeza,qualidadeEquipamento);
 		estudio.addAvaliacao(ave);
 		return ave;
 	}

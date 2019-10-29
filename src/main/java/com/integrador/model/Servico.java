@@ -2,32 +2,34 @@ package com.integrador.model;
 
 import java.util.ArrayList;
 
-public class Servico implements EntidadeBase {
+public class Servico extends EntidadeBase {
 
-	private Long idServicos;
 	private String descricao;
 	private Estudio estudio;
+	private Long idServico;
 	private ArrayList<SubServico> subServicos;
-	private final String nomeTabela = "servico";
-	private final int numeroAtributosTabela=3;
 
 	public Servico() {
 		super();
+
+		nomeTabela = "servico";
+		numeroAtributosTabela = 3;
 	}
-	public Servico(Long idServicos, String descricao, Estudio estudio, ArrayList<SubServico> subServicos) {
-		super();
-		this.idServicos = idServicos;
+	public Servico(Long idServico, String descricao, Estudio estudio, ArrayList<SubServico> subServicos) {
+		this();
+		this.idServico = idServico;
 		this.descricao = descricao;
 		this.estudio = estudio;
 		this.subServicos = subServicos;
+
 	}
 
 
 	public Long getId() {
-		return idServicos;
+		return idServico;
 	}
-	public void setId(Long idServicos) {
-		this.idServicos = idServicos;
+	public void setId(Long idServico) {
+		this.idServico = idServico;
 	}
 	public String getDescricao() {
 		return descricao;
@@ -47,14 +49,7 @@ public class Servico implements EntidadeBase {
 	public void setSubServicos(ArrayList<SubServico> subServicos) {
 		this.subServicos = subServicos;
 	}
-
 	
-	public String getNomeTabela() {
-		return nomeTabela;
-	}
-	public int getNumeroAtributosTabela() {
-		return numeroAtributosTabela;
-	}
 	// Outros Metodos
 	public SubServico addSubServico(SubServico novo){
 		this.subServicos.add(novo);

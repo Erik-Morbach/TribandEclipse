@@ -2,42 +2,51 @@ package com.integrador.model;
 
 import java.sql.Date;
 
-public class AvaliacaoEstudio implements EntidadeBase{
+public class AvaliacaoEstudio extends EntidadeBase {
 
-	private Long idAvEstudio;
-	private Integer limpeza;
-	private Integer qualidadeEquip;
-	private Integer compComHorario;
 	private Integer atendimento;
-	private Date data;
+	private Integer compromissoHorario;
+	private Date dataAvaliacaoEstudio;
 	private Estudio estudio;
-	private final String nomeTabela = "avaliacao_estudio";
-	private final int numeroAtributosTabela=7;
+	private Long idAvaliacaoEstudio;
+	private Integer limpeza;
+	private Integer qualidadeEquipamento;
+
 	
-	
-	public AvaliacaoEstudio() { super(); } 
-	public AvaliacaoEstudio(Long idAvEstudio, Integer limpeza, Integer qualidadeEquip, Integer compComHorario,
-			Integer atendimento, Date data, Estudio estudio) {
+	public AvaliacaoEstudio() {
 		super();
-		this.idAvEstudio = idAvEstudio;
-		this.limpeza = limpeza;
-		this.qualidadeEquip = qualidadeEquip;
-		this.compComHorario = compComHorario;
+		this.nomeTabela = "avaliacao_estudio";
+		this.numeroAtributosTabela = 7;
+	}
+
+	
+
+
+	public AvaliacaoEstudio(Integer atendimento, Integer compromissoHorario, Date dataAvaliacaoEstudio, Estudio estudio,
+			Long idAvaliacaoEstudio, Integer limpeza, Integer qualidadeEquipamento) {
+		this();
 		this.atendimento = atendimento;
-		this.data = data;
+		this.compromissoHorario = compromissoHorario;
+		this.dataAvaliacaoEstudio = dataAvaliacaoEstudio;
 		this.estudio = estudio;
+		this.idAvaliacaoEstudio = idAvaliacaoEstudio;
+		this.limpeza = limpeza;
+		this.qualidadeEquipamento = qualidadeEquipamento;
+
 	}
 
 
-	//GETS E SETS
-	
+
+
+	// GETS E SETS
+
 	@Override
 	public Long getId() {
-		return idAvEstudio;
+		return idAvaliacaoEstudio;
 	}
 
 	public void setId(Long idAvEstudio) {
-		this.idAvEstudio = idAvEstudio;
+		this.idAvaliacaoEstudio = idAvEstudio;
 	}
 
 	public Integer getLimpeza() {
@@ -48,21 +57,25 @@ public class AvaliacaoEstudio implements EntidadeBase{
 		this.limpeza = limpeza;
 	}
 
-	public Integer getQualidadeEquip() {
-		return qualidadeEquip;
+	public Integer getCompromissoHorario() {
+		return compromissoHorario;
 	}
 
-	public void setQualidadeEquip(Integer qualidadeEquip) {
-		this.qualidadeEquip = qualidadeEquip;
+
+	public void setCompromissoHorario(Integer compromissoHorario) {
+		this.compromissoHorario = compromissoHorario;
 	}
 
-	public Integer getCompComHorario() {
-		return compComHorario;
+
+	public Integer getQualidadeEquipamento() {
+		return qualidadeEquipamento;
 	}
 
-	public void setCompComHorario(Integer compComHorario) {
-		this.compComHorario = compComHorario;
+
+	public void setQualidadeEquipamento(Integer qualidadeEquipamento) {
+		this.qualidadeEquipamento = qualidadeEquipamento;
 	}
+
 
 	public Integer getAtendimento() {
 		return atendimento;
@@ -71,13 +84,14 @@ public class AvaliacaoEstudio implements EntidadeBase{
 	public void setAtendimento(Integer atendimento) {
 		this.atendimento = atendimento;
 	}
+	
 
-	public Date getData() {
-		return data;
+	public Date getDataAvaliacaoEstudio() {
+		return dataAvaliacaoEstudio;
 	}
 
-	public void setData(Date data) {
-		this.data = data;
+	public void setDataAvaliacaoEstudio(Date dataAvaliacaoEstudio) {
+		this.dataAvaliacaoEstudio = dataAvaliacaoEstudio;
 	}
 
 	public Estudio getEstudio() {
@@ -89,15 +103,6 @@ public class AvaliacaoEstudio implements EntidadeBase{
 	}
 
 
-	public String getNomeTabela() {
-		return nomeTabela;
-	}
+	// OUTROS METODOS
 
-	public int getNumeroAtributosTabela() {
-		return numeroAtributosTabela;
-	}
-
-	
-	//OUTROS METODOS
-	
 }

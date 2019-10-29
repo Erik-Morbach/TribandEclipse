@@ -2,63 +2,43 @@ package com.integrador.model;
 
 import java.sql.Date;
 
-public class AvaliacaoBanda implements EntidadeBase{
+public class AvaliacaoBanda extends EntidadeBase{
 
-	private Long idAvBanda;
-	private Integer compComHorario;
-	private Integer cuidadoComEquipamento;
-	private Date dataAvBanda;
 	private Banda banda;
-	private final String nomeTabela = "avaliacao_banda";
-	private final int numeroAtributosTabela=5;
+	private Integer compromissoHorario;
+	private Integer cuidadoEquipamento;
+	private Date dataAvaliacaoBanda;
+	private Long idAvaliacaoBanda;
 
-	public AvaliacaoBanda(Long idAvBanda, Integer compComHorario, Integer cuidadoComEquipamento, Date dataAvBanda,
-			Banda banda) {
-		super();
-		this.idAvBanda = idAvBanda;
-		this.compComHorario = compComHorario;
-		this.cuidadoComEquipamento = cuidadoComEquipamento;
-		this.dataAvBanda = dataAvBanda;
+	
+
+
+	public AvaliacaoBanda(Banda banda, Integer compromissoHorario, Integer cuidadoEquipamento, Date dataAvaliacaoBanda,
+			Long idAvaliacaoBanda) {
+		this();
 		this.banda = banda;
+		this.compromissoHorario = compromissoHorario;
+		this.cuidadoEquipamento = cuidadoEquipamento;
+		this.dataAvaliacaoBanda = dataAvaliacaoBanda;
+		this.idAvaliacaoBanda = idAvaliacaoBanda;
+
 	}
 
 	public AvaliacaoBanda() {
 		super();
+		this.nomeTabela="avaliacao_banda";
+		this.numeroAtributosTabela=5;
 	}
 
 	//GETS E SETS;
 	
 	@Override
 	public Long getId() {
-		return idAvBanda;
+		return idAvaliacaoBanda;
 	}
 
 	public void setId(Long idAvBanda) {
-		this.idAvBanda = idAvBanda;
-	}
-
-	public Integer getCompComHorario() {
-		return compComHorario;
-	}
-
-	public void setCompComHorario(Integer compComHorario) {
-		this.compComHorario = compComHorario;
-	}
-
-	public Integer getCuidadoComEquipamento() {
-		return cuidadoComEquipamento;
-	}
-
-	public void setCuidadoComEquipamento(Integer cuidadoComEquipamento) {
-		this.cuidadoComEquipamento = cuidadoComEquipamento;
-	}
-
-	public Date getDataAvBanda() {
-		return dataAvBanda;
-	}
-
-	public void setDataAvBanda(Date dataAvBanda) {
-		this.dataAvBanda = dataAvBanda;
+		this.idAvaliacaoBanda = idAvBanda;
 	}
 
 	public Banda getBanda() {
@@ -69,12 +49,30 @@ public class AvaliacaoBanda implements EntidadeBase{
 		this.banda = banda;
 	}
 
-	public String getNomeTabela() {
-		return nomeTabela;
+	public Integer getCompromissoHorario() {
+		return compromissoHorario;
 	}
 
-	public int getNumeroAtributosTabela() {
-		return numeroAtributosTabela;
+	public void setCompromissoHorario(Integer compromissoHorario) {
+		this.compromissoHorario = compromissoHorario;
 	}
+
+	public Integer getCuidadoEquipamento() {
+		return cuidadoEquipamento;
+	}
+
+	public void setCuidadoEquipamento(Integer cuidadoEquipamento) {
+		this.cuidadoEquipamento = cuidadoEquipamento;
+	}
+
+	public Date getDataAvaliacaoBanda() {
+		return dataAvaliacaoBanda;
+	}
+
+	public void setDataAvaliacaoBanda(Date dataAvaliacaoBanda) {
+		this.dataAvaliacaoBanda = dataAvaliacaoBanda;
+	}
+
+
 
 }

@@ -2,25 +2,26 @@ package com.integrador.model;
 
 import java.util.ArrayList;
 
-public class Chat implements EntidadeBase{
+public class Chat extends EntidadeBase{
 
-	private Long idChat;
 	private Banda banda;
 	private Estudio estudio;
+	private Long idChat;
 	private ArrayList<Mensagem> mensagens;
-	private final String nomeTabela = "chat";
-	private final int numeroAtributosTabela=3;
-
 	public Chat(Long idChat, Banda banda, Estudio estudio, ArrayList<Mensagem> mensagens) {
-		super();
+		this();
 		this.idChat = idChat;
 		this.banda = banda;
 		this.estudio = estudio;
 		this.mensagens = mensagens;
+
 	}
 
 	public Chat() {
 		super();
+
+		nomeTabela = "chat";
+		numeroAtributosTabela = 3;
 	}
 
 	@Override
@@ -53,14 +54,6 @@ public class Chat implements EntidadeBase{
 
 	public void setEstudio(Estudio estudio) {
 		this.estudio = estudio;
-	}
-
-	public String getNomeTabela() {
-		return nomeTabela;
-	}
-
-	public int getNumeroAtributosTabela() {
-		return numeroAtributosTabela;
 	}
 
 	public void addMensagem(Mensagem mensagem) {

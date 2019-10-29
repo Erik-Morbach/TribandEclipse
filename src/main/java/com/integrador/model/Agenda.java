@@ -2,26 +2,26 @@ package com.integrador.model;
 
 import java.util.ArrayList;
 
-public class Agenda implements EntidadeBase{
+public class Agenda extends EntidadeBase{
 
 	private Long idAgenda;
-	private Estudio estudio;
 	private Banda banda;
+	private Estudio estudio;
 	private ArrayList<Reserva> reservas;
-	private final String nomeTabela = "agenda";
-	private final int numeroAtributosTabela = 3;
-	
 
 	public Agenda(Long idAgenda, Estudio estudio, Banda banda, ArrayList<Reserva> reservas) {
-		super();
+		this();
 		this.idAgenda = idAgenda;
 		this.estudio = estudio;
 		this.banda = banda;
 		this.reservas = reservas;
+	
 	}
 
 	public Agenda() {
 		super();
+		this.nomeTabela = "agenda";
+		this.numeroAtributosTabela = 3;
 	}
 
 	//GETS E SETS
@@ -58,16 +58,6 @@ public class Agenda implements EntidadeBase{
 	public void setReservas(ArrayList<Reserva> reservas) {
 		this.reservas = reservas;
 	}
-	
-	public String getNomeTabela() {
-		return nomeTabela;
-	}
-
-	public int getNumeroAtributosTabela() {
-		return numeroAtributosTabela;
-	}
-	
-	
 	//OUTROS METODOS
 
 
@@ -76,5 +66,7 @@ public class Agenda implements EntidadeBase{
 		this.reservas.add(reserva);
 		return reserva;
 	}
+
+
 	
 }

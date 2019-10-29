@@ -141,7 +141,7 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 
 		return resposta;
 	}
-	public T edita( T novo) {
+	public T editar( T novo) {
 		this.conexao.abrirConexao();
 		String sqlUpdate = "REPLACE "+nomeTabela+" VALUE(?";
 		for(int i=1;i<numeroAtributosTabela;i++) {
@@ -168,7 +168,11 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 		return novo;
 	}
 	
-	public List<T> buscaTodos(){
+	public T buscarPorId(Long id) {
+	return null;		
+	}
+	
+	public List<T> buscarTodos(){
 		this.conexao.abrirConexao();
 		
 		ArrayList<T> resultado = new ArrayList<T>();

@@ -50,10 +50,9 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 	
 	}
 
-	private PreparedStatement adicionaAtributo(PreparedStatement statement, T t, int idx) {
+	private PreparedStatement adicionaAtributo(PreparedStatement statement, Object valor, int idx) {
 
 		try {
-			Object valor = valorAtributosTabela[idx-1]; // pega o valor do atributo no objeto t
 			
 			statement.setObject(idx, valor);
 			
@@ -104,7 +103,7 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 
 			for (int i = 1; i <= numeroAtributosTabela; i++) {
 				
-				statement = adicionaAtributo(statement, t, i);
+				statement = adicionaAtributo(statement, valorAtributosTabela[i-1], i);
 
 			}
 			System.out.println(sqlInsert);
@@ -147,17 +146,43 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 	}
 	public T editar( T novo) {
 		this.conexao.abrirConexao();
-		String sqlUpdate = "REPLACE "+nomeTabela+" VALUE(?";
-		for(int i=1;i<numeroAtributosTabela;i++) {
-			sqlUpdate+=",?";
-		}
-		sqlUpdate+=");";
+		String sqlUpdate1 = "UPDATE "+novo.getNomeTabela() + " SET ";
+		String sqlUpdate2 = " WHERE id_"+novo.getNomeTabela()+"=?";
+		boolean virgula = false;
 		
+		int idChavePrimaria = 0;
+		
+		
+		
+		for(int i=0;i<numeroAtributosTabela;i++) {
+			valorAtributosTabela[i] = parser.geraObjeto(atributos[i], novo);
+			if(nomeAtributosTabela[i].equals("id_"+novo.getNomeTabela())) {
+				idChavePrimaria = i;
+				continue;
+			}
+
+			if(virgula) sqlUpdate1+=", ";
+			
+			sqlUpdate1+= nomeAtributosTabela[i];
+			sqlUpdate1+="=?";
+			
+			virgula = true;
+		}
+		sqlUpdate2+=" ;";
+		String sqlUpdate = sqlUpdate1 + sqlUpdate2;
 		try {
 			PreparedStatement statement = (PreparedStatement) this.conexao.getConexao().prepareStatement(sqlUpdate);
-		
-			for(int i=0;i<numeroAtributosClasse;i++) {
-				adicionaAtributo(statement, novo, i+1);
+			System.out.println(sqlUpdate);
+			int idx = 1;
+			for(int i=0;i<numeroAtributosTabela;i++) {
+				int id = idx;
+				if(i==idChavePrimaria) {
+					id = numeroAtributosTabela;				
+					idx--;
+				}
+				System.out.println(valorAtributosTabela[i]+" -> "+id);
+				statement = adicionaAtributo(statement, valorAtributosTabela[i], id);
+				idx++;
 			}
 			
 			statement.executeUpdate();

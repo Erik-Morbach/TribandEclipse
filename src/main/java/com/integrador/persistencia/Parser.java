@@ -18,6 +18,16 @@ public class Parser {
 	}
 
 	// Retorna o nome do atributo no banco e se é uma chave estrangeira
+	private String geraNome(String w) {
+		String ans = "";
+		char[] nomeAtributo = w.toCharArray();
+		for (char k : nomeAtributo) {
+			if (Character.isUpperCase(k))
+				ans += "_";
+			ans += Character.toLowerCase(k);
+		}
+		return ans;
+	}
 	public String geraNome(Field w) {
 		String resposta = null;
 		
@@ -29,14 +39,9 @@ public class Parser {
 		resposta = "";
 
 		if (ehChaveEstrangeira(w)) {
-			resposta += "id_"+w.getType().getSimpleName().toLowerCase();
+			resposta += "id_"+geraNome(w.getType().getSimpleName().toLowerCase());
 		} else {
-			char[] nomeAtributo = w.getName().toCharArray();
-			for (char k : nomeAtributo) {
-				if (Character.isUpperCase(k))
-					resposta += "_";
-				resposta += Character.toLowerCase(k);
-			}
+			resposta += geraNome(w.getName());
 		}
 		return resposta;
 	}

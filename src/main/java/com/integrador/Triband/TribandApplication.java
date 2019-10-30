@@ -26,7 +26,9 @@ public class TribandApplication {
 		
 		
 		BandaDAO dao = new BandaDAO(new Banda());
-		FotoDAO fotoDAO = new FotoDAO(new Foto());
+		dao.deletar(1);
+		
+	/*	FotoDAO fotoDAO = new FotoDAO(new Foto());
 		
 		Foto foto = fotoDAO.salvar(new Foto((long) 0,"teste3",null,null));
 		
@@ -34,12 +36,11 @@ public class TribandApplication {
 		
 		Agenda agenda = agendaDAO.salvar(new Agenda((long)0,null,null,new ArrayList<Reserva>()));
 		
-		Banda a = new Banda((long) 0,"teste3","@gmail.com","1234",3,foto,agenda,new ArrayList<Foto>(),new ArrayList<AvaliacaoBanda>());
+		Banda a = new Banda((long) 0,"jaja","sdf@gmail.com","1234",3,foto,agenda,new ArrayList<Foto>(),new ArrayList<AvaliacaoBanda>());
 		
 
 		a = dao.salvar(a);
 		
-	/*
 		agenda.setBanda(a);
 		foto.setBanda(a);
 		
@@ -47,7 +48,6 @@ public class TribandApplication {
 		fotoDAO.editar(foto);
 		dao.editar(a);
 		*/
-		
 		//SpringApplication.run(TribandApplication.class, args);
 	}
 

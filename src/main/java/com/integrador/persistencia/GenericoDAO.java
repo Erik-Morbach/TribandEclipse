@@ -16,7 +16,7 @@ import com.integrador.model.EntidadeBase;
 
 public abstract class GenericoDAO<T extends EntidadeBase> {
 
-	private ConexaoMysql conexao;
+	protected ConexaoMysql conexao;
 	private Field atributos[];
 	private T object;
 	private String[] nomeAtributosTabela;
@@ -25,6 +25,7 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 	private int numeroAtributosTabela;
 	private int numeroAtributosClasse;
 	private Parser parser;
+	
 	public GenericoDAO(T auxiliar) {
 		super();
 		this.conexao = new ConexaoMysql("localhost", "3306", "root", "BDcasa123", "triband");

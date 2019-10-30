@@ -13,6 +13,7 @@ public class Parser {
 	}
 
 	public boolean ehChaveEstrangeira(Field w) {
+	//	System.out.println(w.getType());
 		return EntidadeBase.class.isAssignableFrom(w.getType());
 	}
 
@@ -44,12 +45,13 @@ public class Parser {
 	
 		try {
 			Object ans = w.get(q);
-
-			if (ans == null)
+			if (ans == null) {
 				return ans;
+			}
 
 			if (ehChaveEstrangeira(w)) {
-				ans = ((EntidadeBase) q).getId();
+				ans = ((EntidadeBase) ans).getId();
+
 			}
 
 			return ans;

@@ -82,11 +82,12 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 			while(atributos[idx]==null) idx++;
 			
 			sqlInsertPart1+=nomeAtributosTabela[i-1];
-			
+
+			//System.out.println(nomeAtributosTabela[i-1]+" -> "+valorAtributosTabela[i-1]);
+		//	System.out.println(atributos[idx].getName()+"  "+atributos[idx].getType());
 			valorAtributosTabela[i-1] = parser.geraObjeto(atributos[idx++], t);
 			
 			
-			System.out.println(nomeAtributosTabela[i-1]+" -> "+valorAtributosTabela[i-1]);
 			if(i<numeroAtributosTabela) sqlInsertPart1+=","; 
 				
 			if(i>1) sqlInsertPart2+=",?";

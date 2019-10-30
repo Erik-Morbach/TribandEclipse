@@ -39,7 +39,6 @@ public class TribandApplication {
 
 		a = dao.salvar(a);
 		
-		System.out.println(a.getId());
 	/*
 		agenda.setBanda(a);
 		foto.setBanda(a);

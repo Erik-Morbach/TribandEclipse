@@ -41,15 +41,27 @@ public class Parser {
 	}
 
 	public Object geraObjeto(Field w, Object q) {
-		Object ans = q;
-		if (ans == null)
+	
+		try {
+			Object ans = w.get(q);
+
+			if (ans == null)
+				return ans;
+
+			if (ehChaveEstrangeira(w)) {
+				ans = ((EntidadeBase) q).getId();
+			}
+
 			return ans;
-
-		if (ehChaveEstrangeira(w)) {
-			ans = ((EntidadeBase) q).getId();
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
-		return ans;
+		
+		return null;
 	}
 
 }

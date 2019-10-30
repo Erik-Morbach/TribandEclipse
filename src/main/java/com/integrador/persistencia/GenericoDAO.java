@@ -24,7 +24,6 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 	private String nomeTabela;
 	private int numeroAtributosTabela;
 	private int numeroAtributosClasse;
-	private int indiceQuery;
 	private Parser parser;
 	public GenericoDAO(T auxiliar) {
 		super();
@@ -84,7 +83,9 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 			
 			sqlInsertPart1+=nomeAtributosTabela[i-1];
 			
-			valorAtributosTabela[i-1] = parser.geraObjeto(atributos[idx], t);
+			valorAtributosTabela[i-1] = parser.geraObjeto(atributos[idx++], t);
+			
+			
 			System.out.println(nomeAtributosTabela[i-1]+" -> "+valorAtributosTabela[i-1]);
 			if(i<numeroAtributosTabela) sqlInsertPart1+=","; 
 				
@@ -152,7 +153,7 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 		
 		try {
 			PreparedStatement statement = (PreparedStatement) this.conexao.getConexao().prepareStatement(sqlUpdate);
-			indiceQuery = 1;
+		
 			for(int i=0;i<numeroAtributosClasse;i++) {
 				adicionaAtributo(statement, novo, i+1);
 			}

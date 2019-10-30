@@ -5,7 +5,7 @@ import java.sql.Time;
 
 public class Reserva extends EntidadeBase{
 
-	private Agenda agenda;
+	private Estudio estudio;
 	private Banda banda;
 	private Date dataReserva;
 	private Time horarioFinal;
@@ -22,10 +22,10 @@ public class Reserva extends EntidadeBase{
 
 
 
-	public Reserva(Agenda agenda, Banda banda, Date dataReserva, Time horarioFinal, Time horarioInicio,
+	public Reserva(Estudio agenda, Banda banda, Date dataReserva, Time horarioFinal, Time horarioInicio,
 			Long idReserva) {
 		this();
-		this.agenda = agenda;
+		this.estudio = agenda;
 		this.banda = banda;
 		this.dataReserva = dataReserva;
 		this.horarioFinal = horarioFinal;
@@ -96,11 +96,11 @@ public class Reserva extends EntidadeBase{
 	public void setBanda(Banda banda) {
 		this.banda = banda;
 	}
-	public Agenda getAgenda() {
-		return agenda;
+	public Estudio getEstudio() {
+		return estudio;
 	}
-	public void setAgenda(Agenda agenda) {
-		this.agenda = agenda;
+	public void setEstudio(Estudio agenda) {
+		this.estudio = agenda;
 	}
 	
 }

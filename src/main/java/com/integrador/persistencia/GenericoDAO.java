@@ -28,7 +28,7 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 	
 	public GenericoDAO(T auxiliar) {
 		super();
-		this.conexao = new ConexaoMysql("localhost", "3306", "root", "BDcasa123", "triband");
+		this.conexao = new ConexaoMysql("localhost", "3306", "root", "ifsul2017", "triband");
 		atributos = auxiliar.getClass().getDeclaredFields();
 
 		nomeTabela = auxiliar.getNomeTabela();
@@ -46,8 +46,6 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 			if(ans!=null) nomeAtributosTabela[idx++] = ans;
 			else atributos[i] = null;
 		}
-
-	
 	}
 
 	private PreparedStatement adicionaAtributo(PreparedStatement statement, Object valor, int idx) {

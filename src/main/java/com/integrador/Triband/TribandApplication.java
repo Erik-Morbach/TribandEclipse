@@ -25,8 +25,8 @@ public class TribandApplication {
 		
 		
 		
-		BandaDAO dao = new BandaDAO(new Banda());
-		dao.deletar(1);
+		//BandaDAO dao = new BandaDAO(new Banda());
+		//dao.deletar(1);
 		
 	/*	FotoDAO fotoDAO = new FotoDAO(new Foto());
 		
@@ -48,7 +48,7 @@ public class TribandApplication {
 		fotoDAO.editar(foto);
 		dao.editar(a);
 		*/
-		//SpringApplication.run(TribandApplication.class, args);
+		SpringApplication.run(TribandApplication.class, args);
 	}
 
 }

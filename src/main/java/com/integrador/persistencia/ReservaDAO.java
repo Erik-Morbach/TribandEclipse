@@ -24,7 +24,7 @@ public class ReservaDAO extends GenericoDAO<Reserva>{
 
 	public List<Reserva> buscarPorPreco(Double preco) {
 		super.conexao.abrirConexao();
-		List<Reserva> reservas = new ArrayList<>();
+		List<Reserva> lista = new ArrayList<>();
 		
 		String sqlBuscar = "SELECT * FROM reserva INNER JOIN banda ON reserva.id_banda = banda.id_banda INNER JOIN agenda ON agenda.id_agenda = reserva.id_reserva WHERE reserva.preco <= ?";
 		PreparedStatement statement;
@@ -36,14 +36,35 @@ public class ReservaDAO extends GenericoDAO<Reserva>{
 			
 			while(rs.next()){ 
 				Reserva r = new Reserva();
-				r.getAgenda().setId(rs.getLong("id_agenda"));
+				r.setId(rs.getLong("id_reserva"));
+				r.setDataReserva(rs.getDate("data_reserva"));
+				r.setHorarioFinal(rs.getTime("horario_final"));
+				r.setHorarioInicio(rs.getTime("horario_inicio"));
+				
+				//BANDA DA RESERVA
+				
+				r.getBanda().setId(rs.getLong("id_banda"));
+				r.getBanda().setNome(rs.getString("nome"));
+				r.getBanda().setSenha(rs.getString("senha"));
+				r.getBanda().setEmail(rs.getString("email"));
+				r.getBanda().setIntegrantes(rs.getInt("integrantes"));
+	            
+	            //agenda da banda
+	            
+				r.getBanda().getAgenda().setId(rs.getLong("id_agenda"));
+				r.getBanda().getAgenda().setBanda(r.getBanda());
 				
 				
-				//terminar
+				//AGENDA DE QUEM PERTENCE ESSA RESERVA (ESTUDIO)
+				
+				
+				r.getEstudio().setId(rs.getLong("id_estudio"));
 				
 				
 				
 			}
+			
+			
 			
 			
 			

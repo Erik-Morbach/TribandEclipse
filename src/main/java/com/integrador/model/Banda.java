@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Banda extends EntidadeBase implements Usuario {
 
-	private Agenda agenda;
+	private ArrayList<Reserva> reservas;
 	private String email;
 	private Foto fotoPerfil;
 	private Long idBanda;
@@ -15,7 +15,7 @@ public class Banda extends EntidadeBase implements Usuario {
 	private ArrayList<AvaliacaoBanda> avaliacoes;
 
 	
-	public Banda(Long idBanda, String nome, String email, String senha, Integer integrantes, Foto fotoPerfil, Agenda agenda,
+	public Banda(Long idBanda, String nome, String email, String senha, Integer integrantes, Foto fotoPerfil, ArrayList<Reserva> reservas,
 			ArrayList<Foto> fotos, ArrayList<AvaliacaoBanda> avaliacoes) {
 		this();
 		this.idBanda = idBanda;
@@ -26,7 +26,7 @@ public class Banda extends EntidadeBase implements Usuario {
 		this.fotoPerfil = fotoPerfil;
 		this.fotos = fotos;
 		this.avaliacoes = avaliacoes;
-		this.agenda = agenda;
+		this.reservas = reservas;
 
 	}
 	public Banda(){
@@ -87,16 +87,13 @@ public class Banda extends EntidadeBase implements Usuario {
 	public void setAvaliacoes(ArrayList<AvaliacaoBanda> avaliacoes) {
 		this.avaliacoes = avaliacoes;
 	}
-	public Agenda getAgenda() {
-		return agenda;
+	public ArrayList<Reserva> getReservas() {
+		return reservas;
 	}
-	public void setAgenda(Agenda agenda) {
-		this.agenda = agenda;
+	public void setAgenda(ArrayList<Reserva> reservas) {
+		this.reservas = reservas;
 	}
 	//OUTROS METODOS
-	
-
-
 	
 	public AvaliacaoBanda addAvaliacao(AvaliacaoBanda av){
 		this.avaliacoes.add(av);
@@ -111,7 +108,7 @@ public class Banda extends EntidadeBase implements Usuario {
 	}
 	
 	public Reserva addReserva(Reserva reserva) {
-		this.agenda.addToAgenda(reserva);
+		this.reservas.add(reserva);
 		return reserva;
 	}
 

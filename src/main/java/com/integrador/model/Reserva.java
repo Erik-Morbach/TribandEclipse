@@ -11,7 +11,8 @@ public class Reserva extends EntidadeBase{
 	private Time horarioFinal;
 	private Time horarioInicio;
 	private Long idReserva;
-	
+	private Double preco;
+
 	public Reserva() {
 		super();
 
@@ -19,9 +20,6 @@ public class Reserva extends EntidadeBase{
 		numeroAtributosTabela = 6;
 	}
 	
-
-
-
 	public Reserva(Estudio agenda, Banda banda, Date dataReserva, Time horarioFinal, Time horarioInicio,
 			Long idReserva) {
 		this();
@@ -33,9 +31,6 @@ public class Reserva extends EntidadeBase{
 		this.idReserva = idReserva;
 	}
 
-
-
-
 	//GETS E SETS
 	
 	@Override
@@ -43,52 +38,44 @@ public class Reserva extends EntidadeBase{
 		// TODO Auto-generated method stub
 		return this.idReserva;
 	}
+	
 	@Override
 	public void setId(Long id) {
 		// TODO Auto-generated method stub
 		this.idReserva = id;
 	}
+	
 	public Date getDataReserva() {
 		return dataReserva;
 	}
-
-
-
 
 	public void setDataReserva(Date dataReserva) {
 		this.dataReserva = dataReserva;
 	}
 
-
-
-
 	public Time getHorarioFinal() {
 		return horarioFinal;
 	}
-
-
-
 
 	public void setHorarioFinal(Time horarioFinal) {
 		this.horarioFinal = horarioFinal;
 	}
 
-
-
-
 	public Time getHorarioInicio() {
 		return horarioInicio;
 	}
 
-
-
-
 	public void setHorarioInicio(Time horarioInicio) {
 		this.horarioInicio = horarioInicio;
 	}
+		
+	public Double getPreco() {
+		return preco;
+	}
 
-
-
+	public void setPreco(Double preco) {
+		this.preco = preco;
+	}
 
 	public Banda getBanda() {
 		return banda;
@@ -102,5 +89,6 @@ public class Reserva extends EntidadeBase{
 	public void setEstudio(Estudio agenda) {
 		this.estudio = agenda;
 	}
+	
 	
 }

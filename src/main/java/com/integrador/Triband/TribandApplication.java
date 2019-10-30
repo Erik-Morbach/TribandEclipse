@@ -7,13 +7,11 @@ import java.util.List;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.integrador.model.Agenda;
 import com.integrador.model.AvaliacaoBanda;
 import com.integrador.model.Banda;
 import com.integrador.model.EntidadeBase;
 import com.integrador.model.Foto;
 import com.integrador.model.Reserva;
-import com.integrador.persistencia.AgendaDAO;
 import com.integrador.persistencia.BandaDAO;
 import com.integrador.persistencia.FotoDAO;
 import com.integrador.persistencia.Parser;

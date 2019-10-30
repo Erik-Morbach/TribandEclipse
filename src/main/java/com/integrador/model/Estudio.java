@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Estudio extends EntidadeBase implements Usuario {
 
-	private Agenda agenda;
+	private ArrayList<Reserva> reservas;
 	private String cnpj;
 	private String email;
 	private Foto fotoPerfil;
@@ -19,7 +19,7 @@ public class Estudio extends EntidadeBase implements Usuario {
 	
 	public Estudio(Long idEstudio, String nome, String email, String senha, String cnpj, Localizacao localizacao,
 			Foto fotoPerfil, ArrayList<Foto> fotos, ArrayList<AvaliacaoEstudio> avaliacoes, ArrayList<Servico> servicos,
-			Agenda agenda) {
+			ArrayList<Reserva> reservas) {
 		this();
 		this.idEstudio = idEstudio;
 		this.nome = nome;
@@ -31,12 +31,11 @@ public class Estudio extends EntidadeBase implements Usuario {
 		this.fotos = fotos;
 		this.avaliacoes = avaliacoes;
 		this.servicos = servicos;
-		this.agenda = agenda;
+		this.reservas = reservas;
 
 	}
 	public Estudio(){
 		super();
-
 		nomeTabela = "estudio";
 		numeroAtributosTabela = 8;
 	}
@@ -104,17 +103,15 @@ public class Estudio extends EntidadeBase implements Usuario {
 	public void setServicos(ArrayList<Servico> servicos) {
 		this.servicos = servicos;
 	}
-	public Agenda getAgenda() {
-		return agenda;
+	public ArrayList<Reserva> getReservas() {
+		return this.reservas;
 	}
-	public void setAgenda(Agenda agenda) {
-		this.agenda = agenda;
+	public void setAgenda(ArrayList<Reserva> reservas) {
+		this.reservas = reservas;
 	}
 	
 	//OUTROS METODOS
 
-	
-	
 	public Servico addServico(Servico novo) {
 		this.servicos.add(novo);
 		return novo;
@@ -141,7 +138,7 @@ public class Estudio extends EntidadeBase implements Usuario {
 	}
 	
 	public Reserva addReserva(Reserva reserva) {
-		this.agenda.addToAgenda(reserva);
+		this.reservas.add(reserva);
 		return reserva;
 	}
 	

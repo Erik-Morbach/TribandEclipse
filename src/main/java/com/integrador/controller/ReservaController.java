@@ -18,11 +18,5 @@ public class ReservaController extends GenericoController<Reserva,ReservaDAO>{
 	@GetMapping("/Horario")
 	public ResponseEntity<List<Reserva>> buscarPorHorario(@RequestBody Time inicio, Time fim){
 		return ResponseEntity.ok(super.t.buscarPorHorario(inicio,fim));
-	}
-	
-	@GetMapping("/preco")
-	public ResponseEntity<List<Reserva>> buscarPorPreco(@PathVariable Double preco){
-		return ResponseEntity.ok(super.t.buscarPorPreco(preco));
-	}
-	
+	}	
 }

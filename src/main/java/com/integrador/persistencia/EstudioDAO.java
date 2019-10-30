@@ -19,7 +19,7 @@ public class EstudioDAO extends GenericoDAO<Estudio>{
 		super.conexao.abrirConexao();
 		Estudio estudio = null;
 		
-		String sqlBuscar = "SELECT * FROM estudio INNER JOIN agenda ON agenda.id_estudio = banda.id_estudio INNER JOIN localizacao ON localizacao.id_localizacao = estudio.id_localizacao WHERE estudio.email=?;";
+		String sqlBuscar = "";
 		PreparedStatement statement;
 		
 		 try {
@@ -37,9 +37,8 @@ public class EstudioDAO extends GenericoDAO<Estudio>{
 		            estudio.setCnpj(rs.getString("cnpj"));
 		            
 		            //agenda do estudio
+		          
 		            
-		            estudio.getAgenda().setId(rs.getLong("id_agenda"));
-		            estudio.getAgenda().setEstudio(estudio);
 		            
 		            //localizacao do estudio
 		            

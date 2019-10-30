@@ -17,7 +17,7 @@ public class BandaDAO extends GenericoDAO<Banda>{
 		super.conexao.abrirConexao();
 		Banda banda = null;
 		
-		String sqlBuscar = "SELECT * FROM banda INNER JOIN agenda ON agenda.id_banda = banda.id_banda WHERE banda.email=?;";
+		String sqlBuscar = "";
 		PreparedStatement statement;
 		
 		 try {
@@ -35,8 +35,7 @@ public class BandaDAO extends GenericoDAO<Banda>{
 		            
 		            //agenda da banda
 		            
-		            banda.getAgenda().setId(rs.getLong("id_agenda"));
-		            banda.getAgenda().setBanda(banda);
+		           
 		        }
 
 			

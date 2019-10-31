@@ -14,8 +14,8 @@ import com.integrador.persistencia.LocalizacaoDAO;
 public class LocalizacaoController extends GenericoController<Localizacao,LocalizacaoDAO>{
 
 	@GetMapping("/localizacao")
-	public ResponseEntity<List<Localizacao>> buscarPorProximidade(@RequestBody Localizacao localizacao){
-		return ResponseEntity.ok(super.t.buscarPorLocalizacao(localizacao));
+	public ResponseEntity<List<Localizacao>> buscarPorEstado(@RequestBody String estado){
+		return ResponseEntity.ok(super.t.buscarPorEstado(estado));
 	}
 	
 	

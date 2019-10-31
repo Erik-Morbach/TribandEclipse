@@ -13,10 +13,6 @@ import com.integrador.persistencia.LocalizacaoDAO;
 @Controller
 public class LocalizacaoController extends GenericoController<Localizacao,LocalizacaoDAO>{
 
-	@GetMapping("/localizacao")
-	public ResponseEntity<List<Localizacao>> buscarPorEstado(@RequestBody String estado){
-		return ResponseEntity.ok(super.t.buscarPorEstado(estado));
-	}
 	
 	
 	

@@ -15,8 +15,4 @@ public class LocalizacaoDAO extends GenericoDAO<Localizacao>{
 		// TODO Auto-generated constructor stub
 	}
 
-	public List<Localizacao> buscarPorEstado(String estado) {
-		return buscaPorAtributo("estado", estado);
-	}
-
 }

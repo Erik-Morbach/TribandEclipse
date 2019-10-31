@@ -1,6 +1,7 @@
 package com.integrador.Triband;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,12 +22,25 @@ public class TribandApplication {
 
 	public static void main(String[] args) {
 		
-		
-		
-		//BandaDAO dao = new BandaDAO(new Banda());
-		//dao.deletar(1);
-		
-	/*	FotoDAO fotoDAO = new FotoDAO(new Foto());
+
+		BandaDAO dao = new BandaDAO(new Banda());
+		ArrayList<Banda> lista = (ArrayList<Banda>) dao.buscarTodos();
+		for(Banda w: lista) {
+			System.out.println(w.getId());
+			System.out.println(w.getNome());
+			System.out.println(w.getIntegrantes());
+			System.out.println(w.getEmail());
+			System.out.println(w.getSenha());
+		}
+		Banda a = dao.buscarPorId((long) 4);
+		System.out.println(a.getId());
+		System.out.println(a.getNome());
+		System.out.println(a.getIntegrantes());
+		System.out.println(a.getEmail());
+		System.out.println(a.getSenha());
+	/*;
+		dao.deletar(1);
+	FotoDAO fotoDAO = new FotoDAO(new Foto());
 		
 		Foto foto = fotoDAO.salvar(new Foto((long) 0,"teste3",null,null));
 		
@@ -46,7 +60,7 @@ public class TribandApplication {
 		fotoDAO.editar(foto);
 		dao.editar(a);
 		*/
-		SpringApplication.run(TribandApplication.class, args);
+		//SpringApplication.run(TribandApplication.class, args);
 	}
 
 }

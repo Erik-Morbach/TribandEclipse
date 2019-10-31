@@ -2,13 +2,15 @@ package com.integrador.persistencia;
 
 import java.lang.reflect.Field;
 
+import org.hibernate.validator.internal.util.privilegedactions.GetDeclaredField;
 import org.springframework.data.util.Pair;
 
 import com.integrador.model.EntidadeBase;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Parser {
+public class Parser<T extends EntidadeBase> {
 	public Parser() {
 	}
 
@@ -71,4 +73,35 @@ public class Parser {
 		return null;
 	}
 
+
+	public String geraInnerJoin(T aux) throws IllegalArgumentException, IllegalAccessException {
+		String ans = "";
+		Field atributos[] = aux.getClass().getDeclaredFields();
+		for(Field w: atributos) {
+			w.setAccessible(true);
+			if(ehChaveEstrangeira(w)) {
+				String nome = geraNome(w).substring(3); // Como é chave estrangeira começa com id_****; 
+				
+				ans +=  " INNER JOIN "+nome+" ON "+nome+".id_"+nome+"="+aux.getNomeTabela()+".id_"+nome; 
+				
+			}
+		}
+		
+		return ans;
+	}
+
+	public String[] geraNomeAtributos(Field[] atributos, int tamanhoClasse) {
+		int idx = 0;
+		String nomes[] = new String[tamanhoClasse];
+		int tamanho = atributos.length;
+		for(int i=0;i<tamanho;i++) {
+			atributos[i].setAccessible(true);       // necessario para podermos pegar o valor do atributo
+			String ans = geraNome(atributos[i]);
+			nomes[idx++] = ans;
+		}	
+		
+		// TODO Auto-generated method stub
+		return nomes;
+	}
+	
 }

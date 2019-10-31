@@ -15,7 +15,7 @@ public class LocalizacaoController extends GenericoController<Localizacao,Locali
 
 	@GetMapping("/localizacao")
 	public ResponseEntity<List<Localizacao>> buscarPorProximidade(@RequestBody Localizacao localizacao){
-		return ResponseEntity.ok(super.t.buscarPorProximidade(localizacao));
+		return ResponseEntity.ok(super.t.buscarPorLocalizacao(localizacao));
 	}
 	
 	

@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Parser<T extends EntidadeBase> {
-	public Parser() {
+	T auxiliar;
+	public Parser(T obj) {
+		auxiliar = obj;
 	}
 
 	public boolean ehChaveEstrangeira(Field w) {
@@ -104,4 +106,18 @@ public class Parser<T extends EntidadeBase> {
 		return nomes;
 	}
 	
+	public Field geraAtributo(String nome) {
+		try {
+			Field ans = auxiliar.getClass().getDeclaredField(nome);
+			ans.setAccessible(true);
+			return ans;
+		} catch (NoSuchFieldException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

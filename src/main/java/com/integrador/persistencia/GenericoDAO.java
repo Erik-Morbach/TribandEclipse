@@ -18,9 +18,9 @@ import com.integrador.model.EntidadeBase;
 
 public abstract class GenericoDAO<T extends EntidadeBase> {
 
-	protected ConexaoMysql conexao;
+	private ConexaoMysql conexao;
 	private Field atributos[];
-	private T object;
+	protected T object;
 	private String[] nomeAtributosTabela;
 	private Object[] valorAtributosTabela;
 	private String nomeTabela;
@@ -37,7 +37,7 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 		numeroAtributosTabela = auxiliar.getNumeroAtributosTabela();
 		numeroAtributosClasse = atributos.length;
 		object = auxiliar;
-		parser = new Parser<T>();
+		parser = new Parser<T>(auxiliar);
 
 		valorAtributosTabela = new Object[numeroAtributosClasse];
 		nomeAtributosTabela = parser.geraNomeAtributos(atributos, numeroAtributosClasse);
@@ -199,17 +199,21 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 		return novo;
 	}
 
-	protected List<T> busca(String especifica, Object valorEspecifico) {
+	protected List<T> busca(String query, Object valorEspecifico[]) {
 		this.conexao.abrirConexao();
 
 		ArrayList<T> resultado = new ArrayList<T>();
 
 		try {
-			String sqlSelect = "SELECT * FROM " + nomeTabela + " " + parser.geraInnerJoin(object) + " "+especifica+";";
+			String sqlSelect = "SELECT * FROM " + nomeTabela + " " + parser.geraInnerJoin(object) + " " + query + ";";
 
 			PreparedStatement statement = (PreparedStatement) this.conexao.getConexao().prepareStatement(sqlSelect);
-			if(especifica.length()>0) statement = adicionaAtributo(statement, valorEspecifico, 1);
-			
+			if (query.length() > 0) {
+				int tam = valorEspecifico.length;
+				for (int i = 0; i < tam; i++)
+					statement = adicionaAtributo(statement, valorEspecifico[i], i + 1);
+			}
+
 			ResultSet rs = statement.executeQuery();
 
 			Constructor<T> construtor = (Constructor<T>) object.getClass().getConstructor(null);
@@ -287,12 +291,74 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 		return resultado;
 	}
 
+	protected T buscaUm(String field, Object valor) {
+		List<T> ans = buscaPorAtributo(field, valor);
+		if (ans.size() == 1)
+			return ans.get(0);
+		return null;
+	}
+
 	public T buscarPorId(Long id) {
-		return busca(" WHERE "+object.getNomeTabela()+".id_"+object.getNomeTabela()+"=?",id).get(0);
+		String nome = object.getClass().getSimpleName();
+		return buscaUm("id"+nome, id);
 	}
 
 	public List<T> buscarTodos() {
-		return busca("",0);
+		return busca("", null);
+	}
+
+	protected List<T> buscaPorAtributo(String field, Object valor) {
+		try {
+			Field atributo = parser.geraAtributo(field);
+			Field atributosValor[] = atributo.getType().getDeclaredFields();
+			int tam = atributosValor.length;
+			
+			String nomeAtributos[] = parser.geraNomeAtributos(atributosValor, tam);
+
+			Object valores[] = new Object[tam];
+			for (int i = 0; i < tam; i++) {
+				if(nomeAtributos[i]==null) continue;
+				if(parser.ehChaveEstrangeira(atributosValor[i])) {
+					nomeAtributos[i]=null;
+					continue;
+				}
+				Object valorAtributo = atributosValor[i].get(valor);
+				if(valorAtributo==null) {
+					nomeAtributos[i]=null;
+					continue;
+				}
+				
+				valores[i] = valorAtributo;
+			}
+
+			String query = geraQuery(atributo, atributosValor,nomeAtributos);
+			return busca(query, valores);
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+
+	}
+
+	private String geraQuery(Field field, Field[] atributosField,String nomeAtributos[]) {
+		int tamanho = atributosField.length;
+
+		String sqlQuery = " WHERE ";
+		String nome = nomeTabela;
+		boolean and = false;
+		for (int i = 0; i < tamanho; i++) {
+			if (nomeAtributos[i] == null)
+				continue;
+			if (and)
+				sqlQuery += " AND ";
+			sqlQuery += nome + "." + nomeAtributos[i] + "=? ";
+			and = true;
+		}
+		return sqlQuery;
 	}
 
 }

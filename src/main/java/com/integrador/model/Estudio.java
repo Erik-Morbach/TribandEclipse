@@ -13,27 +13,32 @@ public class Estudio extends EntidadeBase implements Usuario {
 	private Localizacao localizacao;
 	private String nome;
 	private String senha;
+	private String telefone;
+	private String descricao;
 	private ArrayList<Foto> fotos;
 	private ArrayList<AvaliacaoEstudio> avaliacoes;
 	private ArrayList<Servico> servicos;
 	
-	public Estudio(Long idEstudio, String nome, String email, String senha, String cnpj, Localizacao localizacao,
-			Foto fotoPerfil, ArrayList<Foto> fotos, ArrayList<AvaliacaoEstudio> avaliacoes, ArrayList<Servico> servicos,
-			ArrayList<Reserva> reservas) {
+	
+	public Estudio(ArrayList<Reserva> reservas, String cnpj, String email, Foto fotoPerfil, Long idEstudio,
+			Localizacao localizacao, String nome, String senha, String telefone, String descricao,
+			ArrayList<Foto> fotos, ArrayList<AvaliacaoEstudio> avaliacoes, ArrayList<Servico> servicos) {
 		this();
-		this.idEstudio = idEstudio;
-		this.nome = nome;
-		this.email = email;
-		this.senha = senha;
+		this.reservas = reservas;
 		this.cnpj = cnpj;
-		this.localizacao = localizacao;
+		this.email = email;
 		this.fotoPerfil = fotoPerfil;
+		this.idEstudio = idEstudio;
+		this.localizacao = localizacao;
+		this.nome = nome;
+		this.senha = senha;
+		this.telefone = telefone;
+		this.descricao = descricao;
 		this.fotos = fotos;
 		this.avaliacoes = avaliacoes;
 		this.servicos = servicos;
-		this.reservas = reservas;
-
 	}
+
 	public Estudio(){
 		super();
 		nomeTabela = "estudio";
@@ -109,8 +114,28 @@ public class Estudio extends EntidadeBase implements Usuario {
 	public void setAgenda(ArrayList<Reserva> reservas) {
 		this.reservas = reservas;
 	}
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public void setReservas(ArrayList<Reserva> reservas) {
+		this.reservas = reservas;
+	}
 	
 	//OUTROS METODOS
+
 
 	public Servico addServico(Servico novo) {
 		this.servicos.add(novo);

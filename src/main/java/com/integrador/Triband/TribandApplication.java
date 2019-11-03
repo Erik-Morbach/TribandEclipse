@@ -24,14 +24,7 @@ public class TribandApplication {
 		
 
 		BandaDAO dao = new BandaDAO(new Banda());
-		ArrayList<Banda> lista = (ArrayList<Banda>) dao.buscarTodos();
-		for(Banda w: lista) {
-			System.out.println(w.getId());
-			System.out.println(w.getNome());
-			System.out.println(w.getIntegrantes());
-			System.out.println(w.getEmail());
-			System.out.println(w.getSenha());
-		}
+
 		Banda a = dao.buscarPorId((long) 4);
 		System.out.println(a.getId());
 		System.out.println(a.getNome());

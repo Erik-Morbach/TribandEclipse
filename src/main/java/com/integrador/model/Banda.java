@@ -11,24 +11,27 @@ public class Banda extends EntidadeBase implements Usuario {
 	private Integer integrantes;
 	private String nome;
 	private String senha;
+	private String telefone;
 	private ArrayList<Foto> fotos;
 	private ArrayList<AvaliacaoBanda> avaliacoes;
 
 	
-	public Banda(Long idBanda, String nome, String email, String senha, Integer integrantes, Foto fotoPerfil, ArrayList<Reserva> reservas,
-			ArrayList<Foto> fotos, ArrayList<AvaliacaoBanda> avaliacoes) {
+	
+	public Banda(ArrayList<Reserva> reservas, String email, Foto fotoPerfil, Long idBanda, Integer integrantes,
+			String nome, String senha, String telefone, ArrayList<Foto> fotos, ArrayList<AvaliacaoBanda> avaliacoes) {
 		this();
-		this.idBanda = idBanda;
-		this.nome = nome;
+		this.reservas = reservas;
 		this.email = email;
-		this.senha = senha;
-		this.integrantes = integrantes;
 		this.fotoPerfil = fotoPerfil;
+		this.idBanda = idBanda;
+		this.integrantes = integrantes;
+		this.nome = nome;
+		this.senha = senha;
+		this.telefone = telefone;
 		this.fotos = fotos;
 		this.avaliacoes = avaliacoes;
-		this.reservas = reservas;
-
 	}
+
 	public Banda(){
 		super();
 
@@ -93,8 +96,20 @@ public class Banda extends EntidadeBase implements Usuario {
 	public void setAgenda(ArrayList<Reserva> reservas) {
 		this.reservas = reservas;
 	}
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public void setReservas(ArrayList<Reserva> reservas) {
+		this.reservas = reservas;
+	}
 	//OUTROS METODOS
 	
+
 	public AvaliacaoBanda addAvaliacao(AvaliacaoBanda av){
 		this.avaliacoes.add(av);
 		return av;

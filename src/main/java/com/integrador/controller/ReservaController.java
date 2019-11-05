@@ -15,8 +15,5 @@ import com.integrador.persistencia.ReservaDAO;
 @Controller
 public class ReservaController extends GenericoController<Reserva,ReservaDAO>{
 
-	@GetMapping("/Horario")
-	public ResponseEntity<List<Reserva>> buscarPorHorario(@RequestBody Time inicio, Time fim){
-		return ResponseEntity.ok(super.t.buscarPorHorario(inicio,fim));
-	}	
+	
 }

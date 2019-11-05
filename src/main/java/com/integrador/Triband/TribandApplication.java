@@ -23,9 +23,9 @@ public class TribandApplication {
 	public static void main(String[] args) {
 		
 
-		BandaDAO dao = new BandaDAO(new Banda());
+		BandaDAO dao = new BandaDAO();
 
-		Banda a = dao.buscarPorId((long) 4);
+		Banda a = dao.buscarPorEmail("a@g.com");
 		System.out.println(a.getId());
 		System.out.println(a.getNome());
 		System.out.println(a.getIntegrantes());

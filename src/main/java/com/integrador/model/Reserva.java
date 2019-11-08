@@ -2,27 +2,37 @@ package com.integrador.model;
 
 import java.sql.Date;
 import java.sql.Time;
-
+@Tabela(nome="reserva")
 public class Reserva extends EntidadeBase{
-
+	@Atributo(nome="id_estudio",tipo=EntidadeBase.class)
 	private Estudio estudio;
+
+	@Atributo(nome="id_banda",tipo=EntidadeBase.class)
 	private Banda banda;
+	@Atributo(nome="data_reserva",tipo=Date.class)
 	private Date dataReserva;
+	@Atributo(nome="horario_final",tipo=Time.class)
 	private Time horarioFinal;
+
+	@Atributo(nome="horario_inicio",tipo=Time.class)
 	private Time horarioInicio;
+
+	@Atributo(nome="id_reserva",tipo=Long.class)
 	private Long idReserva;
+
+	@Atributo(nome="preco",tipo=Double.class)
 	private Double preco;
 
 	public Reserva() {
 		super();
 
-		nomeTabela = "reserva";
-		numeroAtributosTabela = 6;
 	}
 	
 	public Reserva(Estudio agenda, Banda banda, Date dataReserva, Time horarioFinal, Time horarioInicio,
 			Long idReserva) {
-		this();
+
+		super();
+
 		this.estudio = agenda;
 		this.banda = banda;
 		this.dataReserva = dataReserva;

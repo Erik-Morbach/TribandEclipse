@@ -2,16 +2,32 @@ package com.integrador.model;
 import java.sql.Date;
 import java.util.ArrayList;
 
+@Tabela(nome="banda")
 public class Banda extends EntidadeBase implements Usuario {
 
 	private ArrayList<Reserva> reservas;
+
+	@Atributo(nome="email",tipo=String.class)
 	private String email;
+	
+	@Atributo(nome="id_foto",tipo=EntidadeBase.class)
 	private Foto fotoPerfil;
+	
+	@Atributo(nome="id_banda",tipo=Long.class)
 	private Long idBanda;
+	
+	@Atributo(nome="integrantes",tipo=Integer.class)
 	private Integer integrantes;
+	
+	@Atributo(nome="nome",tipo=String.class)
 	private String nome;
+	
+	@Atributo(nome="senha",tipo=String.class)
 	private String senha;
+	
+	@Atributo(nome="telefone",tipo=String.class)
 	private String telefone;
+	
 	private ArrayList<Foto> fotos;
 	private ArrayList<AvaliacaoBanda> avaliacoes;
 
@@ -19,7 +35,7 @@ public class Banda extends EntidadeBase implements Usuario {
 	
 	public Banda(ArrayList<Reserva> reservas, String email, Foto fotoPerfil, Long idBanda, Integer integrantes,
 			String nome, String senha, String telefone, ArrayList<Foto> fotos, ArrayList<AvaliacaoBanda> avaliacoes) {
-		this();
+		super();
 		this.reservas = reservas;
 		this.email = email;
 		this.fotoPerfil = fotoPerfil;
@@ -34,9 +50,6 @@ public class Banda extends EntidadeBase implements Usuario {
 
 	public Banda(){
 		super();
-
-		nomeTabela = "banda";
-		numeroAtributosTabela = 7;
 	}
 
 	//GET E SETS

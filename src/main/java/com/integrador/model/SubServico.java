@@ -1,20 +1,25 @@
 package com.integrador.model;
-
+@Tabela(nome="subservico")
 public class SubServico extends EntidadeBase {
 
+	@Atributo(nome="descricao",tipo=String.class)
 	private String descricao;
+
+	@Atributo(nome="id_subservico",tipo=Long.class)
 	private Long idSubservico;
+
+	@Atributo(nome="id_servico",tipo=EntidadeBase.class)
 	private Servico servico;
 
 	public SubServico() {
 		super();
 
-		nomeTabela = "subservico";
-		numeroAtributosTabela = 3;
 	}
 
 	public SubServico(Long idSubServico, String descricao, Servico servico) {
-		this();
+
+		super();
+
 		this.idSubservico = idSubServico;
 		this.descricao = descricao;
 		this.servico = servico;

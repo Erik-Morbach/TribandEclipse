@@ -2,18 +2,31 @@ package com.integrador.model;
 
 import java.sql.Date;
 import java.util.ArrayList;
-
+@Tabela(nome="estudio")
 public class Estudio extends EntidadeBase implements Usuario {
 
 	private ArrayList<Reserva> reservas;
+	@Atributo(nome="cnpj",tipo=String.class)
 	private String cnpj;
+
+	@Atributo(nome="email",tipo=String.class)
 	private String email;
+	@Atributo(nome="id_foto",tipo=EntidadeBase.class)
 	private Foto fotoPerfil;
+	@Atributo(nome="id_estudio",tipo=Long.class)
 	private Long idEstudio;
+
+	@Atributo(nome="id_localizacao",tipo=EntidadeBase.class)
 	private Localizacao localizacao;
+
+	@Atributo(nome="nome",tipo=String.class)
 	private String nome;
+	@Atributo(nome="senha",tipo=String.class)
 	private String senha;
+	@Atributo(nome="telefone",tipo=String.class)
 	private String telefone;
+
+	@Atributo(nome="descricao",tipo=String.class)
 	private String descricao;
 	private ArrayList<Foto> fotos;
 	private ArrayList<AvaliacaoEstudio> avaliacoes;
@@ -23,7 +36,7 @@ public class Estudio extends EntidadeBase implements Usuario {
 	public Estudio(ArrayList<Reserva> reservas, String cnpj, String email, Foto fotoPerfil, Long idEstudio,
 			Localizacao localizacao, String nome, String senha, String telefone, String descricao,
 			ArrayList<Foto> fotos, ArrayList<AvaliacaoEstudio> avaliacoes, ArrayList<Servico> servicos) {
-		this();
+		super();
 		this.reservas = reservas;
 		this.cnpj = cnpj;
 		this.email = email;
@@ -41,8 +54,6 @@ public class Estudio extends EntidadeBase implements Usuario {
 
 	public Estudio(){
 		super();
-		nomeTabela = "estudio";
-		numeroAtributosTabela = 8;
 	}
 	
 	//GET E SETS

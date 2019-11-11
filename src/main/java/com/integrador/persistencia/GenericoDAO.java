@@ -1,4 +1,5 @@
 package com.integrador.persistencia;
+
 //Atualizar o Model com CHavePrimaria e Chave EStrangeira
 import java.lang.reflect.Field;
 import java.sql.PreparedStatement;
@@ -29,11 +30,11 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 		this.conexao = new ConexaoMysql("localhost", "3306", "root", "BDcasa123", "triband");
 		atributos = auxiliar.getClass().getDeclaredFields();
 		numeroAtributosClasse = atributos.length;
-		
-		for(int i=0;i<numeroAtributosClasse;i++) {
+
+		for (int i = 0; i < numeroAtributosClasse; i++) {
 			atributos[i].setAccessible(true);
 		}
-		
+
 		nomeTabela = auxiliar.getClass().getAnnotation(Tabela.class).nome();
 		classeT = (Class<T>) auxiliar.getClass();
 		parser = new Parser<T>(auxiliar);
@@ -202,9 +203,9 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 
 	protected List<T> busca(String query, Object valorEspecifico[]) {
 		this.conexao.abrirConexao();
-
-		if (valorEspecifico.length == 0)
-			query = "";
+		if (valorEspecifico != null)
+			if (valorEspecifico.length == 0)
+				query = "";
 
 		ArrayList<T> resultado = new ArrayList<T>();
 
@@ -219,11 +220,9 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 			// na query;
 
 			PreparedStatement statement = (PreparedStatement) this.conexao.getConexao().prepareStatement(sqlSelect);
-			System.out.println(sqlSelect);
 			if (query.length() > 0) {
 				int tam = valorEspecifico.length;
 				for (int i = 0; i < tam; i++) {
-					System.out.println(valorEspecifico[i]);
 					statement = adicionaAtributo(statement, valorEspecifico[i], i + 1);
 				}
 			} // valores são adicionados na query, se for necessario
@@ -251,12 +250,11 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 						// caso seja chave estrangeira um objeto deste tipo é criado, para isso é
 						// necessario o construtor deste objeto;
 						Class<?> tipoFilho = atributos[idx].getAnnotation(Atributo.class).tipo();
-						
+
 						Field[] atributosFilho = tipoFilho.getDeclaredFields();
 
 						EntidadeBase filhoAux = (EntidadeBase) parser.geraObjetodeClasse(tipoFilho);
 
-						
 						// um objeto do tipoFilho é criado e os seus atributos são setados;
 						for (Field atributoFilho : atributosFilho) {
 							atributoFilho.setAccessible(true);
@@ -278,7 +276,7 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 							}
 
 							atributoFilho.set(filhoAux, valorAtributoFilho); // seta o valor do atributo[i] no objeto
-																			// Filho;
+																				// Filho;
 						}
 
 						valor = filhoAux;
@@ -350,7 +348,7 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 	protected Pair<String, List<Object>> geraQuery(String nome, Object valor, String query, List<Object> valoresQuery) {
 		try {
 			Field atributoQuery = parser.geraAtributo(nome);
-			
+
 			ArrayList<Object> valores;
 			if (valoresQuery == null)
 				valores = new ArrayList<Object>();
@@ -359,15 +357,15 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 
 			if (parser.ehChaveEstrangeira(atributoQuery)) {
 				Field atributosDaQuery[] = atributoQuery.getType().getDeclaredFields();
-				
-				ArrayList<String> nomeDosAtributos =  new ArrayList<String>();
-				
-				for (Field atributo: atributosDaQuery) {
-					if(!atributo.isAnnotationPresent(Atributo.class)) {
+
+				ArrayList<String> nomeDosAtributos = new ArrayList<String>();
+
+				for (Field atributo : atributosDaQuery) {
+					if (!atributo.isAnnotationPresent(Atributo.class)) {
 						atributo = null;
 						continue;
 					}
-					
+
 					if (parser.ehChavePrimaria(atributo) || parser.ehChaveEstrangeira(atributo)) {
 						atributo = null;
 						continue;
@@ -381,8 +379,8 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 					nomeDosAtributos.add(atributo.getAnnotation(Atributo.class).nome());
 					valores.add(valorAtributo);
 				}
-				
-				query += geraQuery((String[])nomeDosAtributos.toArray()) + " ";
+
+				query += geraQuery((String[]) nomeDosAtributos.toArray()) + " ";
 			} else {
 				query += geraQuery(atributoQuery.getAnnotation(Atributo.class).nome()) + " ";
 				valores.add(valor);

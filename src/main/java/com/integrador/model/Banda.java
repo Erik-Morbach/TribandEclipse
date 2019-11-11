@@ -10,9 +10,11 @@ public class Banda extends EntidadeBase implements Usuario {
 	@Atributo(nome="email",tipo=String.class)
 	private String email;
 	
-	@Atributo(nome="id_foto",tipo=EntidadeBase.class)
+	@ChaveEstrangeira
+	@Atributo(nome="id_foto",tipo=Foto.class)
 	private Foto fotoPerfil;
 	
+	@ChavePrimaria
 	@Atributo(nome="id_banda",tipo=Long.class)
 	private Long idBanda;
 	

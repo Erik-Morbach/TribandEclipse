@@ -4,19 +4,26 @@ public class Localizacao extends EntidadeBase {
 
 	@Atributo(nome="bairro",tipo=String.class)
 	private String bairro;
+	
 	@Atributo(nome="cep",tipo=Long.class)
 	private Long cep;
+	
 	@Atributo(nome="cidade",tipo=String.class)
 	private String cidade;
+
 	@Atributo(nome="estado",tipo=String.class)
 	private String estado;
 
+	@ChavePrimaria
 	@Atributo(nome="id_localizacao",tipo=Long.class)
 	private Long idLocalizacao;
+	
 	@Atributo(nome="latitude",tipo=Double.class)
 	private Double latitude;
+	
 	@Atributo(nome="longitude",tipo=Double.class)
 	private Double longitude;
+	
 	@Atributo(nome="numero",tipo=Integer.class)
 	private Integer numero;
 

@@ -2,12 +2,15 @@ package com.integrador.model;
 @Tabela(nome="foto")
 public class Foto extends EntidadeBase {
 
-	@Atributo(nome="id_banda",tipo=EntidadeBase.class)
+	@ChaveEstrangeira
+	@Atributo(nome="id_banda",tipo=Banda.class)
 	private Banda banda;
 
-	@Atributo(nome="id_estudio",tipo=EntidadeBase.class)
+	@ChaveEstrangeira
+	@Atributo(nome="id_estudio",tipo=Estudio.class)
 	private Estudio estudio;
 
+	@ChavePrimaria
 	@Atributo(nome="id_foto",tipo=Long.class)
 	private Long idFoto;
 

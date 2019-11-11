@@ -6,28 +6,37 @@ import java.util.ArrayList;
 public class Estudio extends EntidadeBase implements Usuario {
 
 	private ArrayList<Reserva> reservas;
+	
 	@Atributo(nome="cnpj",tipo=String.class)
 	private String cnpj;
 
 	@Atributo(nome="email",tipo=String.class)
 	private String email;
-	@Atributo(nome="id_foto",tipo=EntidadeBase.class)
+
+	@ChaveEstrangeira
+	@Atributo(nome="id_foto",tipo=Foto.class)
 	private Foto fotoPerfil;
+
+	@ChavePrimaria
 	@Atributo(nome="id_estudio",tipo=Long.class)
 	private Long idEstudio;
 
-	@Atributo(nome="id_localizacao",tipo=EntidadeBase.class)
+	@ChaveEstrangeira
+	@Atributo(nome="id_localizacao",tipo=Localizacao.class)
 	private Localizacao localizacao;
 
 	@Atributo(nome="nome",tipo=String.class)
 	private String nome;
+	
 	@Atributo(nome="senha",tipo=String.class)
 	private String senha;
+	
 	@Atributo(nome="telefone",tipo=String.class)
 	private String telefone;
 
 	@Atributo(nome="descricao",tipo=String.class)
 	private String descricao;
+	
 	private ArrayList<Foto> fotos;
 	private ArrayList<AvaliacaoEstudio> avaliacoes;
 	private ArrayList<Servico> servicos;

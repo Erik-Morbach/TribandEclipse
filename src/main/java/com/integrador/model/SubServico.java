@@ -5,10 +5,12 @@ public class SubServico extends EntidadeBase {
 	@Atributo(nome="descricao",tipo=String.class)
 	private String descricao;
 
+	@ChavePrimaria
 	@Atributo(nome="id_subservico",tipo=Long.class)
 	private Long idSubservico;
 
-	@Atributo(nome="id_servico",tipo=EntidadeBase.class)
+	@ChaveEstrangeira
+	@Atributo(nome="id_servico",tipo=Servico.class)
 	private Servico servico;
 
 	public SubServico() {

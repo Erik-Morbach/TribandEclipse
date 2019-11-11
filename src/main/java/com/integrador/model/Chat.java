@@ -4,17 +4,20 @@ import java.util.ArrayList;
 @Tabela(nome="chat")
 public class Chat extends EntidadeBase{
 
-	@Atributo(nome="banda",tipo=EntidadeBase.class)
+	@ChaveEstrangeira
+	@Atributo(nome="banda",tipo=Banda.class)
 	private Banda banda;
 	
-
-	@Atributo(nome="estudio",tipo=EntidadeBase.class)
+	@ChaveEstrangeira
+	@Atributo(nome="estudio",tipo=Estudio.class)
 	private Estudio estudio;
 
+	@ChavePrimaria
 	@Atributo(nome="id_chat",tipo=Long.class)
 	private Long idChat;
 	
 	private ArrayList<Mensagem> mensagens;
+	
 	public Chat(Long idChat, Banda banda, Estudio estudio, ArrayList<Mensagem> mensagens) {
 		super();
 		this.idChat = idChat;

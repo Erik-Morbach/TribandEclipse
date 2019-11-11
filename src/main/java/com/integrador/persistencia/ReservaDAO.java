@@ -1,5 +1,6 @@
 package com.integrador.persistencia;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,5 +28,8 @@ public class ReservaDAO extends GenericoDAO<Reserva>{
 		return buscaPorAtributo("estudio",estudio);
 	}
 
+	public List<Reserva> buscaPorEstudioEData(Estudio estudio, Date data){
+		return busca(" WHERE id_estudio=? AND data_reserva>=?",new Object[] {estudio.getId(),data});
+	}
 
 }

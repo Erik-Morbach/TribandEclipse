@@ -6,9 +6,12 @@ public class Servico extends EntidadeBase {
 
 	@Atributo(nome="descricao",tipo=String.class)
 	private String descricao;
-	@Atributo(nome="estudio",tipo=EntidadeBase.class)
+
+	@ChaveEstrangeira
+	@Atributo(nome="estudio",tipo=Estudio.class)
 	private Estudio estudio;
 
+	@ChavePrimaria
 	@Atributo(nome="id_servico",tipo=Long.class)
 	private Long idServico;
 	

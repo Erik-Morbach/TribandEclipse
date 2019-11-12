@@ -24,7 +24,7 @@ public class AvaliacaoEstudio extends EntidadeBase {
 	@Atributo(nome="limpeza",tipo=Integer.class)
 	private Integer limpeza;
 
-	@Atributo(nome="qualidadeEquipamento",tipo=Integer.class)
+	@Atributo(nome="qualidade_equipamento",tipo=Integer.class)
 	private Integer qualidadeEquipamento;
 
 	

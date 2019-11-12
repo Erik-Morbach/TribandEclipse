@@ -37,13 +37,17 @@ public class Estudio extends EntidadeBase implements Usuario {
 	@Atributo(nome="descricao",tipo=String.class)
 	private String descricao;
 	
+	@Atributo(nome="preco",tipo=Double.class)
+	private Double preco;
+	
 	private ArrayList<Foto> fotos;
 	private ArrayList<AvaliacaoEstudio> avaliacoes;
 	private ArrayList<Servico> servicos;
 	
 	
+
 	public Estudio(ArrayList<Reserva> reservas, String cnpj, String email, Foto fotoPerfil, Long idEstudio,
-			Localizacao localizacao, String nome, String senha, String telefone, String descricao,
+			Localizacao localizacao, String nome, String senha, String telefone, String descricao, Double preco,
 			ArrayList<Foto> fotos, ArrayList<AvaliacaoEstudio> avaliacoes, ArrayList<Servico> servicos) {
 		super();
 		this.reservas = reservas;
@@ -56,6 +60,7 @@ public class Estudio extends EntidadeBase implements Usuario {
 		this.senha = senha;
 		this.telefone = telefone;
 		this.descricao = descricao;
+		this.preco = preco;
 		this.fotos = fotos;
 		this.avaliacoes = avaliacoes;
 		this.servicos = servicos;
@@ -156,6 +161,14 @@ public class Estudio extends EntidadeBase implements Usuario {
 	
 	//OUTROS METODOS
 
+
+	public Double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(Double preco) {
+		this.preco = preco;
+	}
 
 	public Servico addServico(Servico novo) {
 		this.servicos.add(novo);

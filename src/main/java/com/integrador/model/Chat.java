@@ -5,11 +5,11 @@ import java.util.ArrayList;
 public class Chat extends EntidadeBase{
 
 	@ChaveEstrangeira
-	@Atributo(nome="banda",tipo=Banda.class)
+	@Atributo(nome="id_banda",tipo=Banda.class)
 	private Banda banda;
 	
 	@ChaveEstrangeira
-	@Atributo(nome="estudio",tipo=Estudio.class)
+	@Atributo(nome="id_estudio",tipo=Estudio.class)
 	private Estudio estudio;
 
 	@ChavePrimaria

@@ -1,5 +1,7 @@
 package com.integrador.controller;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,10 +20,17 @@ public class BandaController extends GenericoController<Banda,BandaDAO>{
 		// TODO Auto-generated constructor stub
 	}
 
-	@GetMapping("/{email}")
+	@GetMapping("/email/{email}")
 	public ResponseEntity<Banda> buscarPorEmail(@PathVariable String email) {
-		return ResponseEntity.ok(super.t.buscarPorEmail(email));
+		return ResponseEntity.ok(t.buscarPorEmail(email));
 	}
-	
+	@GetMapping("/nome/{nome}")
+	public ResponseEntity<List<Banda>> buscaPorNome(@PathVariable String nome){
+		return ResponseEntity.ok(t.buscaPorNome(nome));
+	}
+	@GetMapping("/login/{email}/{senha}")
+	public ResponseEntity<Banda> buscaPorEmailESenha(@PathVariable String email, @PathVariable String senha){
+		return ResponseEntity.ok(t.buscaPorEmailESenha(email, senha));
+	}
 	
 }

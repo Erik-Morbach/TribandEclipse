@@ -25,36 +25,37 @@ public abstract class GenericoController<P extends EntidadeBase,T extends Generi
 	
 	//BUSCAR TODOS
 	
-	@GetMapping("")
+	@GetMapping("/")
 	public ResponseEntity<List<P>> buscarTodos(){
 		return ResponseEntity.ok(this.t.buscarTodos());
 	} 
 	
 	//BUSCAR POR ID
 	
-	@GetMapping("/{id}")
-	public ResponseEntity<P> BuscarPorId(@PathVariable Long id){
+	@GetMapping("/id/{id}")
+	public ResponseEntity<P> buscarPorId(@PathVariable Long id){
 		return ResponseEntity.ok(this.t.buscarPorId(id));
 	}
 	
 	//SALVAR
 	
 	@PostMapping("/")
-	public ResponseEntity<P> Adicionar(@RequestBody P p){
+	public ResponseEntity<P> adicionar(@RequestBody P p){
 		return ResponseEntity.ok(this.t.salvar(p));
 	}
 	
 	//DELETAR
 	
-	@DeleteMapping("/{id}")
-	public ResponseEntity<Boolean> Deletar(@PathVariable Long id){
+	@DeleteMapping("/id/{id}")
+	public ResponseEntity<Boolean> deletar(@PathVariable Long id){
 		return ResponseEntity.ok(this.t.deletar(id));
 	}
 	
 	//EDITAR
 	
-	@PutMapping("")
-	public ResponseEntity<P> Editar(@RequestBody P p){
+	@PutMapping("/")
+	public ResponseEntity<P> editar(@RequestBody P p){
+		
 		return ResponseEntity.ok(this.t.editar(p));
 	}
 	

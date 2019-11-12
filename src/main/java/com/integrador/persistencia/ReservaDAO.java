@@ -15,11 +15,11 @@ public class ReservaDAO extends GenericoDAO<Reserva>{
 	}
 
 	public List<Reserva> buscaPorBanda(Banda banda){
-		return buscaPorAtributo("banda",banda);
+		return buscaPorAtributoUsandoId("banda",banda);
 	}
 	
 	public List<Reserva> buscaPorEstudio(Estudio estudio){
-		return buscaPorAtributo("estudio",estudio);
+		return buscaPorAtributoUsandoId("estudio",estudio);
 	}
 
 	public List<Reserva> buscaPorEstudioEData(Estudio estudio, Date data){

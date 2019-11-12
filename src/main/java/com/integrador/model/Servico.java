@@ -8,7 +8,7 @@ public class Servico extends EntidadeBase {
 	private String descricao;
 
 	@ChaveEstrangeira
-	@Atributo(nome="estudio",tipo=Estudio.class)
+	@Atributo(nome="id_estudio",tipo=Estudio.class)
 	private Estudio estudio;
 
 	@ChavePrimaria

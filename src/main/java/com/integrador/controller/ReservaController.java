@@ -25,19 +25,19 @@ public class ReservaController extends GenericoController<Reserva, ReservaDAO> {
 	}
 
 	@GetMapping("/banda")
-	public ResponseEntity<List<Reserva>> buscaPorBanda(@RequestBody Banda banda) {
-		return ResponseEntity.ok(t.buscaPorBanda(banda));
+	public ResponseEntity<List<Reserva>> buscarPorBanda(@RequestBody Banda banda) {
+		return ResponseEntity.ok(t.buscarPorBanda(banda));
 	}
 
 	@GetMapping("/estudio")
-	public ResponseEntity<List<Reserva>> buscaPorEstudio(@RequestBody Estudio estudio) {
-		return ResponseEntity.ok(t.buscaPorEstudio(estudio));
+	public ResponseEntity<List<Reserva>> buscarPorEstudio(@RequestBody Estudio estudio) {
+		return ResponseEntity.ok(t.buscarPorEstudio(estudio));
 	}
 
 	@GetMapping("/estudio/{data}")
-	public ResponseEntity<List<Reserva>> buscaPorEstudioEData(@RequestBody Estudio estudio, @PathVariable String data) {
+	public ResponseEntity<List<Reserva>> buscarPorEstudioEData(@RequestBody Estudio estudio, @PathVariable String data) {
 		Date dateSql = Date.valueOf(data);	
-		return ResponseEntity.ok(t.buscaPorEstudioEData(estudio, dateSql));
+		return ResponseEntity.ok(t.buscarPorEstudioEData(estudio, dateSql));
 
 
 	}

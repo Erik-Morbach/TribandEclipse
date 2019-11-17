@@ -22,8 +22,8 @@ public class SubServicoController extends GenericoController<SubServico,SubServi
 	}
 	
 	@GetMapping("/servico")
-	public ResponseEntity<List<SubServico>> buscaPorServico(@RequestBody Servico servico){
-		return ResponseEntity.ok(t.buscaPorServico(servico));
+	public ResponseEntity<List<SubServico>> buscarPorServico(@RequestBody Servico servico){
+		return ResponseEntity.ok(t.buscarPorServico(servico));
 	}
 
 }

@@ -22,7 +22,7 @@ public class MensagemController extends GenericoController<Mensagem,MensagemDAO>
 	}
 
 	@GetMapping("/chat")
-	public ResponseEntity<List<Mensagem>> buscaPorChat(@RequestBody Chat chat){
-		return ResponseEntity.ok(t.buscaPorChat(chat));
+	public ResponseEntity<List<Mensagem>> buscarPorChat(@RequestBody Chat chat){
+		return ResponseEntity.ok(t.buscarPorChat(chat));
 	}
 }

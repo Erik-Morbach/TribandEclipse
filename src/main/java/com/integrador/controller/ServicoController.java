@@ -21,8 +21,8 @@ public class ServicoController extends GenericoController<Servico,ServicoDAO>{
 		// TODO Auto-generated constructor stub
 	}
 	@GetMapping("/estudio")
-	public ResponseEntity<List<Servico>> buscaPorEstudio(@RequestBody Estudio estudio){
-		return ResponseEntity.ok(t.buscaPorEstudio(estudio));
+	public ResponseEntity<List<Servico>> buscarPorEstudio(@RequestBody Estudio estudio){
+		return ResponseEntity.ok(t.buscarPorEstudio(estudio));
 	}
 
 }

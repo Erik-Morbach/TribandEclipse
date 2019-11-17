@@ -82,7 +82,7 @@ public class EstudioDAO extends GenericoDAO<Estudio> {
 		
 		
 		
-		String queryHorarioDisponivel = " WHERE estudio.id_estudio NOT IN ("
+		String queryHorarioDisponivel = " estudio.id_estudio NOT IN ("
 								   +    " 	SELECT estudio.id_estudio FROM estudio INNER JOIN reserva ON estudio.id_estudio=reserva.id_estudio"
 								   + 	"   WHERE horario_inicio>=? AND horario_final<=?)";
 		
@@ -121,8 +121,8 @@ public class EstudioDAO extends GenericoDAO<Estudio> {
 
 			if (tenta == valorQuerys.get(i).size())
 				continue; // se todos os valores da query forem nulos você pula pra proxima;
-
-			query += " " + querys[i];
+			if(!query.isEmpty()) query += " AND ";
+			query += querys[i];
 
 			valorQuerys.get(i).forEach(new Consumer<Object>() {
 				public void accept(Object t) {

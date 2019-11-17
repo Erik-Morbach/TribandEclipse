@@ -23,7 +23,7 @@ public class ReservaDAO extends GenericoDAO<Reserva>{
 	}
 
 	public List<Reserva> buscaPorEstudioEData(Estudio estudio, Date data){
-		return busca(" WHERE id_estudio=? AND data_reserva>=?",new Object[] {estudio.getId(),data});
+		return busca(" WHERE reserva.id_estudio=? AND DATEDIFF(data_reserva,?)>0",new Object[] {estudio.getId(),data});
 	}
 
 }

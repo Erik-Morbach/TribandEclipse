@@ -401,6 +401,7 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 				ArrayList<String> nomeDosAtributos = new ArrayList<String>();
 
 				for (Field atributo : atributosDaQuery) {
+					atributo.setAccessible(true);
 					if (!atributo.isAnnotationPresent(Atributo.class)) {
 						atributo = null;
 						continue;
@@ -419,12 +420,13 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 					nomeDosAtributos.add(atributo.getAnnotation(Atributo.class).nome());
 					valores.add(valorAtributo);
 				}
+				String nomeTabelaEstrangeira = atributoQuery.getType().getAnnotation(Tabela.class).nome();
 				if(query.length()>0) query+=" AND ";
-				query += geraQuery((String[]) nomeDosAtributos.toArray()) + " ";
+				query += geraQuery( nomeDosAtributos.toArray(new String[] {}),nomeTabelaEstrangeira) + " ";
 			} else {
 
 				if(query.length()>0) query+=" AND ";
-				query += geraQuery(atributoQuery.getAnnotation(Atributo.class).nome()) + " ";
+				query += geraQuery(atributoQuery.getAnnotation(Atributo.class).nome(),nomeTabela) + " ";
 				valores.add(valor);
 			}
 			return Pair.of(query, valores);
@@ -438,14 +440,14 @@ public abstract class GenericoDAO<T extends EntidadeBase> {
 		return null;
 	}
 
-	protected String geraQuery(String nome) { // metodo de auxilio para faciliar o metodo gerarQuery quando se tem
+	protected String geraQuery(String nome,String nomeTabela) { // metodo de auxilio para faciliar o metodo gerarQuery quando se tem
 												// somente
 												// um nome;
 		String vetor[] = { nome };
-		return geraQuery(vetor);
+		return geraQuery(vetor,nomeTabela);
 	}
 
-	protected String geraQuery(String nomeAtributos[]) { // gera Query apartir de uma lista de nomes de atributos da
+	protected String geraQuery(String nomeAtributos[],String nomeTabela) { // gera Query apartir de uma lista de nomes de atributos da
 															// tabela
 		int tamanho = nomeAtributos.length;
 

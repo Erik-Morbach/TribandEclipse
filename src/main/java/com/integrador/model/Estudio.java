@@ -136,9 +136,7 @@ public class Estudio extends EntidadeBase implements Usuario {
 	public ArrayList<Reserva> getReservas() {
 		return this.reservas;
 	}
-	public void setAgenda(ArrayList<Reserva> reservas) {
-		this.reservas = reservas;
-	}
+	
 	public String getTelefone() {
 		return telefone;
 	}

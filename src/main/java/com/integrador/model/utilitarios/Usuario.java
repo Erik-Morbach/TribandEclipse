@@ -20,6 +20,6 @@ public interface Usuario{
 	
 	
 
-	public abstract Foto getFotoPerfil();
-	public abstract void setFotoPerfil(Foto foto);
+	public Foto getFotoPerfil();
+	public void setFotoPerfil(Foto foto);
 }

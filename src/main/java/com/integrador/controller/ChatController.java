@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.integrador.model.Banda;
-import com.integrador.model.Chat;
-import com.integrador.model.Estudio;
+import com.integrador.model.classes.Banda;
+import com.integrador.model.classes.Chat;
+import com.integrador.model.classes.Estudio;
 import com.integrador.persistencia.ChatDAO;
 
 @Controller
